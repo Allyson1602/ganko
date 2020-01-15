@@ -1,0 +1,48 @@
+html, body, .container, .row{
+	height: 100%;
+}
+body{
+	font-family: arial;
+}
+.box_senha{
+	padding-bottom: 10px;
+}
+.banner{
+	background: url('../img/wallpaper.jpeg');
+	background-size: cover;
+}
+.login label{
+	color: #00FF00;
+	font-size: 22px;
+}
+.login input{
+	padding: 3px;
+
+	font-size: 18px;
+	border-radius: 15px;
+	border: 1px solid #00FF00;
+	text-align: center;
+	color: #444;
+}
+.login .recuperar{
+	color: #00bb00;
+	font-weight: bold;
+	margin-left: 70px;
+}
+.login button{
+	padding: 0px 20px 2px 20px;
+	margin-bottom: 15px;
+
+	background-color: #009900;
+	border: none;
+	font-size: 20px;
+	border-radius: 15px;
+	color: #FFFFFF;
+}
+.login .cadastrar{
+	margin-left: 5px;
+
+	color: #00bb00;
+	font-weight: bold;
+	/*border: 1px solid red;*/
+}

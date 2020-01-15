@@ -1,0 +1,62 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<form method="POST" action="/cadastrado">
+				<div class="box_nome">
+					<label>nome:</label>
+					<input type="text" name="nome" />
+				</div>
+				<div class="box_sobrenome">
+					<label>sobrenome:</label>
+					<input type="text" name="sobrenome" />
+				</div>
+				<div class="box_nascimento">
+					<label>data de nascimento:</label>
+					<input type="date" name="nascimento" />
+				</div>
+				<div class="box_genero">
+					<fieldset><label>gênero:</label>
+						<label for="masculino">masculino</label>
+						<input type="radio" name="genero" value="masculino" id="masculino" />
+
+						<label for="feminino">feminino</label>
+						<input type="radio" name="genero" value="feminino" id="feminino" />
+
+						<label for="outro">outro</label>
+						<input type="radio" name="genero" value="outro" id="outro" />
+					</fieldset>
+				</div>
+				<div class="box_tempo">
+					<label>quando começou:</label>
+					<input type="date" name="comeco" />
+				</div>
+				<div class="box_senha">
+					<label>senha:</label>
+					<input type="password" name="senha" />
+				</div>
+				<div class="box_senha_conf">
+					<label>confirmação da senha:</label>
+					<input type="password" name="confirmacao" />
+				</div>
+				<div class="box_email">
+
+				</div>
+				<div class="box_login">
+					<label>login:</label>
+					<input type="text" name="login" />
+				</div>
+				<div class="box_email">
+					<label>email:</label>
+					<input type="text" name="email" />
+				</div>
+				<!-- <div></div> VALIDAÇÃO(NÃO SOU UM ROBÔ) -->
+				<div class="box_entrar">
+					<button type="submit">cadastrar</button>
+				</div>
+			</form>
+		</div>
+		<div class="col banner">
+
+		</div>
+	</div>
+</div>
