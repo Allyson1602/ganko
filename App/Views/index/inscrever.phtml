@@ -1,7 +1,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<form method="POST" action="/registrar" name="cadastro" onsubmit="return validaFormulario()">
+			<form method="POST" action="/cadastrar" name="cadastro" onsubmit="return validaFormulario()">
 				<div class="box_nome">
 					<label>nome:</label>
 					<input type="text" name="nome" value="<?= $this->view->usuario['nome']; ?>" maxlength="10" />

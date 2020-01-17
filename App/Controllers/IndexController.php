@@ -14,7 +14,9 @@
 		public function index() {
 			$this->render("index");
 		}
-		public function cadastrar(){
+
+		// CADASTRO
+		public function inscrever(){
 			$this->view->usuario = array(
 				'nome' => '',
 				'sobrenome' => '',
@@ -28,9 +30,9 @@
 			$this->view->loginExiste = false;
 			$this->view->emailExiste = false;
 
-			$this->render("cadastrar");
+			$this->render("/inscrever");
 		}
-		public function registrar(){
+		public function cadastrar(){
 			$usuario = Container::getModel('Usuario');
 
 			$usuario->__set('nome', $_POST['nome']);
@@ -60,7 +62,7 @@
 
 				$this->view->loginExiste = true;
 
-				$this->render('/cadastrar');
+				$this->render('/inscrever');
 			}
 			if(count($usuario->emailExiste()) != 0){
 				$this->view->emailExiste = false;
@@ -77,24 +79,28 @@
 
 				$this->view->emailExiste = true;
 
-				$this->render('/cadastrar');
+				$this->render('/inscrever');
 			}else{
 				$usuario->inserir();
 
-				$this->render('/cadastro_concluido');
+				$this->render('/cadastrado');
 			}
 		}
-		public function cadastroConcluido(){
-			$this->render('/cadastro_concluido');
+		public function cadastrado(){
+			$this->render('/cadastrado');
 		}
-		public function recuperarConta(){
-			$this->render('/recuperar_conta');
+		// CADASTRO
+
+		// RECUPERAÇÃO DE CONTA
+		// FASE 1
+		public function recuperar(){
+			$this->render('/recuperar');
 		}
-		public function recuperandoConta(){			
+		public function recuperacao(){			
 			$usuario = Container::getModel('Usuario');
 
 			$usuario->__set('email', $_GET['email']);
-			$emailCadastrado = $usuario->recuperarContaBD();
+			$emailCadastrado = $usuario->recuperarConta();
 
 			if($emailCadastrado != 0){
 					// ###################COLOCAR NA WEB PARA FUNCIONAR, AINDA NÃO TESTADO###################
@@ -109,7 +115,7 @@
 					// envio de email
 					// $de = "facilitaUDF@gmail.com";
 					// $titulo = "Recuperação de conta na Bambu";
-					// $msg = "<h3>Olá ".$emailCadastrado['nome']."</h3> <br/><br/> <p>Foi requisitada a alteração da senha na sua conta Bambu,<br/> confirme a alteração neste link <a href='"./recuperar_email?chave=$chave."'>RECUPERAR CONTA</a><br/> caso não tenha sido você o solicitante, por favor desconsidere este email.</p><p>Não responda esse email</p>";
+					// $msg = "<h3>Olá ".$emailCadastrado['nome']."</h3> <br/><br/> <p>Foi requisitada a alteração da senha na sua conta Bambu,<br/> confirme a alteração neste link <a href='"./recuperar_email?chave=$chave."'>RECUPERAR CONTA</a></br/><p>LINK DIRETO</p><br/> caso não tenha sido você o solicitante, por favor desconsidere este email.</p><p>Não responda esse email</p>";
 
 					// // use wordwrap() if lines are longer than 70 characters
 					// $msg = wordwrap($msg,70);
@@ -117,23 +123,56 @@
 					// $headers = "From: ".$_GET['email']."\r\n"."CC: ".$_GET['email'];
 
 					// mail($de,$titulo,$msg,$headers);
-
-					$this->render('recuperada_conta');
 			}
+			$this->render('/msg_recuperar');
 		}
+		public function msgRecuperar(){
+			$this->render('/msg_recuperar');
+		}
+		// FASE 2
 		public function recuperarEmail(){
 			// passar email para db usuarios
 			$usuario = Container::getModel('Usuario');
 
-			$chavelink = $_GET['chave'];
-			$chaveemail = $usuario->validaEmail();
-			$chaveemail = $chaveemail['chave_recuperacao'];
-			if($chaveemail === $chavelink){
-				// redireciona para atualizar dados
-			}
+			$usuario->__set('chave_recuperacao', $_GET['chave']);
+			$id_usuario = $usuario->validaEmail();
 
-			$this->render('/recuperar_email');
+			if($id_usuario != ''){
+				?>
+
+					<form method="POST" action="/editar_senha">
+						<div class="box_senha">
+							<label>Nova senha:</label>
+							<input type="password" name="nv_senha" />
+						</div>
+						<div class="box_confimacao">
+							<label>Digite novamente:</label>
+							<input type="password" name="confimacao" />
+						</div>
+						<div class="box_hidden">
+							<input type="hidden" name="id" value="<?= $id_usuario['id']; ?>" />
+						</div>
+						<div class="box_submit">
+							<button type="submit">alterar senha</button>
+						</div>
+					</form>
+
+				<?php
+			}else{
+				echo 'não foi possível alterar sua senha.';
+			}
 		}
+		public function editarSenha(){
+			if($_POST['verificador'] == "true"){
+				$usuario = Container::getModel('Usuario');
+	
+				$usuario->__set('senha', $_POST['nv_senha']);
+				$usuario->alterarSenha();
+			}
+				
+			return $this->render('/');
+		}
+		// RECUPERAÇÃO DE CONTA
 	}
 
 ?>

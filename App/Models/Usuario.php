@@ -57,7 +57,7 @@
 
 			return $this;
 		}
-		public function recuperarContaBD(){
+		public function recuperarConta(){
 			$query = "SELECT nome, email FROM usuarios WHERE email=:email";
 			$stmt = $this->db->prepare($query);
 			$stmt->bindValue(':email', $this->__get('email'));
@@ -66,21 +66,29 @@
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
 		public function enviarChave(){
-			$query = "INSERT INTO usuarios(chave_recuperacao) VALUES(:chave_recuperacao)";
+			$query = "UPDATE usuarios SET chave_recuperacao = :chave_recuperacao WHERE email = :email"; 
 			$stmt = $this->db->prepare($query);
 			$stmt->bindValue(':chave_recuperacao', $this->__get('chave_recuperacao'));
-
+			$stmt->bindValue(':email', $this->__get('email'));
 			$stmt->execute();
 
 			return $this;
 		}
 		public function validaEmail(){
-			$query = "SELECT chave_recuperacao FROM usuarios WHERE email=:email";
+			$query = "SELECT id FROM usuarios WHERE chave_recuperacao=:chave_recuperacao";
 			$stmt = $this->db->prepare($query);
-			$stmt->bindValue(':email', $this->__get('email'));
+			$stmt->bindValue(':chave_recuperacao', $this->__get('chave_recuperacao'));
 			$stmt->execute();
 
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
+		}
+		public function alterarSenha(){
+			$query = "UPDATE usuarios SET senha = ".md5($this->__get('senha'))." WHERE id = ".$_POST['id'];
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue('', );
+			$stmt->execute();
+
+			return $this;
 		}
 
 		// add kinesis

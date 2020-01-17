@@ -13,30 +13,30 @@ class Route extends Bootstrap {
 			'controller' => 'indexController',
 			'action' => 'index'
 		);
+		$routes['inscrever'] = array(
+			'route' => '/inscrever',
+			'controller' => 'indexController',
+			'action' => 'inscrever'
+		);
 		$routes['cadastrar'] = array(
 			'route' => '/cadastrar',
 			'controller' => 'indexController',
 			'action' => 'cadastrar'
 		);
-		$routes['registrar'] = array(
-			'route' => '/registrar',
+		$routes['cadastrado'] = array(
+			'route' => '/cadastrado',
 			'controller' => 'indexController',
-			'action' => 'registrar'
+			'action' => 'cadastrado'
 		);
-		$routes['cadastroConcluido'] = array(
-			'route' => '/cadastro_concluido',
+		$routes['recuperar'] = array(
+			'route' => '/recuperar',
 			'controller' => 'indexController',
-			'action' => 'cadastro_concluido'
+			'action' => 'recuperar'
 		);
-		$routes['recuperarConta'] = array(
-			'route' => '/recuperar_conta',
+		$routes['recuperacao'] = array(
+			'route' => '/recuperacao',
 			'controller' => 'indexController',
-			'action' => 'recuperarConta'
-		);
-		$routes['recuperandoConta'] = array(
-			'route' => '/recuperando_conta',
-			'controller' => 'indexController',
-			'action' => 'recuperandoConta'
+			'action' => 'recuperacao'
 		);
 		$routes['recuperarEmail'] = array(
 			'route' => '/recuperar_email',
@@ -47,6 +47,21 @@ class Route extends Bootstrap {
 			'route' => '/recuperada_conta',
 			'controller' => 'indexController',
 			'action' => 'recuperadaConta'
+		);
+		$routes['msgRecuperar'] = array(
+			'route' => '/msg_recuperar',
+			'controller' => 'indexController',
+			'action' => 'msgRecuperar'
+		);
+		$routes['recuperarEmail'] = array(
+			'route' => '/recuperar_email',
+			'controller' => 'indexController',
+			'action' => 'recuperarEmail'
+		);
+		$routes['editarSenha'] = array(
+			'route' => '/editar_senha',
+			'controller' => '/indexController',
+			'action' => 'editarSenha'
 		);
 
 		$this->setRoutes($routes);
