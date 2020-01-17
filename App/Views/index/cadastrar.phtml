@@ -1,18 +1,22 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<form method="POST" action="/cadastrado">
+			<form method="POST" action="/registrar" name="cadastro" onsubmit="return validaFormulario()">
 				<div class="box_nome">
 					<label>nome:</label>
-					<input type="text" name="nome" />
+					<input type="text" name="nome" value="<?= $this->view->usuario['nome']; ?>" maxlength="10" />
 				</div>
 				<div class="box_sobrenome">
 					<label>sobrenome:</label>
-					<input type="text" name="sobrenome" />
+					<input type="text" name="sobrenome" value="<?= $this->view->usuario['sobrenome']; ?>" maxlength="10" />
 				</div>
 				<div class="box_nascimento">
 					<label>data de nascimento:</label>
-					<input type="date" name="nascimento" />
+					<input type="date" name="nascimento" value="<?= $this->view->usuario['nascimento']; ?>" />
+				</div>
+				<div class="box_tempo">
+					<label>tempo de prática em kinesis:</label>
+					<input type="date" name="comeco" value="<?= $this->view->usuario['comeco']; ?>" />
 				</div>
 				<div class="box_genero">
 					<fieldset><label>gênero:</label>
@@ -26,28 +30,32 @@
 						<input type="radio" name="genero" value="outro" id="outro" />
 					</fieldset>
 				</div>
-				<div class="box_tempo">
-					<label>quando começou:</label>
-					<input type="date" name="comeco" />
-				</div>
-				<div class="box_senha">
-					<label>senha:</label>
-					<input type="password" name="senha" />
-				</div>
-				<div class="box_senha_conf">
-					<label>confirmação da senha:</label>
-					<input type="password" name="confirmacao" />
-				</div>
-				<div class="box_email">
-
-				</div>
 				<div class="box_login">
 					<label>login:</label>
-					<input type="text" name="login" />
+					<input type="text" name="login" value="<?= $this->view->usuario['nick']; ?>" maxlength="10" />
+					<?php
+						if($this->view->loginExiste){
+							print("<small class='text text-danger'>login já existe</small>");
+						}
+					?>
 				</div>
 				<div class="box_email">
 					<label>email:</label>
-					<input type="text" name="email" />
+					<input type="text" name="email" value="<?= $this->view->usuario['email']; ?>" maxlength="40" />
+					<?php 
+						if($this->view->emailExiste){
+							print("<small class='text text-danger'>email já cadastrado</small>");
+						}
+					?>
+				</div>
+				<div class="box_senha">
+					<label>senha:</label>
+					<input type="password" name="senha" maxlength="15" />
+					<small>máximo 15 caracteres</small>
+				</div>
+				<div class="box_senha_conf">
+					<label>confirmação da senha:</label>
+					<input type="password" name="confirmacao" maxlength="15" />
 				</div>
 				<!-- <div></div> VALIDAÇÃO(NÃO SOU UM ROBÔ) -->
 				<div class="box_entrar">

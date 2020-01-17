@@ -5,9 +5,8 @@
 	use MF\Model\Model;
 
 	class Usuario extends Model{
-		private $id, $nome, $sobrenome, $nascimento,
-		$primaria, $secundaria, $genero, $comeco, $senha, 
-		$login, $email;
+		private $id, $nome, $sobrenome, $nascimento, $genero, $comeco, $senha, 
+		$nick, $email;
 
 		public function __get($atributo){
 			return $this->$atributo;
@@ -16,20 +15,42 @@
 			$this->$atributo = $valor;
 		}
 
+
+		public function nickExiste(){
+			$query = "SELECT nick FROM usuarios WHERE nick = :nick";
+			$stmt = $this->db->prepare($query);
+			
+			$stmt->bindValue(':nick', $this->__get('nick'));
+
+			$stmt->execute();
+
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		}
+		public function emailExiste(){
+			$query = "SELECT email FROM usuarios WHERE email = :email";
+			$stmt = $this->db->prepare($query);
+			
+			$stmt->bindValue(':email', $this->__get('email'));
+
+			$stmt->execute();
+
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		}
+		
+
 		public function inserir(){
 			$query = "INSERT INTO usuarios(nome, sobrenome, nascimento, 
-				genero, comeco, senha, login, email) VALUES(:nome, :sobrenome, :nascimento,
-				 :genero, :comeco, :senha, :login, :email)";
+				genero, comeco, senha, nick, email) VALUES(:nome, :sobrenome, :nascimento,
+				 :genero, :comeco, :senha, :nick, :email)";
 			$stmt = $this->db->prepare($query);
 
 			$stmt->bindValue(':nome', $this->__get('nome'));
 			$stmt->bindValue(':sobrenome', $this->__get('sobrenome'));
 			$stmt->bindValue(':nascimento', $this->__get('nascimento'));
-			$stmt->bindValue(':kinesis', $this->__get('secundaria'));   // outra tabela
 			$stmt->bindValue(':genero', $this->__get('genero'));
 			$stmt->bindValue(':comeco', $this->__get('comeco'));
 			$stmt->bindValue(':senha', md5($this->__get('senha')));
-			$stmt->bindValue(':login', $this->__get('login'));
+			$stmt->bindValue(':nick', $this->__get('nick'));
 			$stmt->bindValue(':email', $this->__get('email'));
 
 			$stmt->execute();
