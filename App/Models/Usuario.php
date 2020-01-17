@@ -6,7 +6,7 @@
 
 	class Usuario extends Model{
 		private $id, $nome, $sobrenome, $nascimento, $genero, $comeco, $senha, 
-		$nick, $email;
+		$nick, $email, $chave_recuperacao;
 
 		public function __get($atributo){
 			return $this->$atributo;
@@ -56,6 +56,31 @@
 			$stmt->execute();
 
 			return $this;
+		}
+		public function recuperarContaBD(){
+			$query = "SELECT nome, email FROM usuarios WHERE email=:email";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':email', $this->__get('email'));
+			$stmt->execute();
+
+			return $stmt->fetch(\PDO::FETCH_ASSOC);
+		}
+		public function enviarChave(){
+			$query = "INSERT INTO usuarios(chave_recuperacao) VALUES(:chave_recuperacao)";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':chave_recuperacao', $this->__get('chave_recuperacao'));
+
+			$stmt->execute();
+
+			return $this;
+		}
+		public function validaEmail(){
+			$query = "SELECT chave_recuperacao FROM usuarios WHERE email=:email";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':email', $this->__get('email'));
+			$stmt->execute();
+
+			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
 
 		// add kinesis

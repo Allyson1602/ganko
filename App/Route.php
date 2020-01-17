@@ -28,6 +28,26 @@ class Route extends Bootstrap {
 			'controller' => 'indexController',
 			'action' => 'cadastro_concluido'
 		);
+		$routes['recuperarConta'] = array(
+			'route' => '/recuperar_conta',
+			'controller' => 'indexController',
+			'action' => 'recuperarConta'
+		);
+		$routes['recuperandoConta'] = array(
+			'route' => '/recuperando_conta',
+			'controller' => 'indexController',
+			'action' => 'recuperandoConta'
+		);
+		$routes['recuperarEmail'] = array(
+			'route' => '/recuperar_email',
+			'controller' => 'indexController',
+			'action' => 'recuperarEmail'
+		);
+		$routes['recuperadaConta'] = array(
+			'route' => '/recuperada_conta',
+			'controller' => 'indexController',
+			'action' => 'recuperadaConta'
+		);
 
 		$this->setRoutes($routes);
 	}

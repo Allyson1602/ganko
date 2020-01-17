@@ -4,6 +4,11 @@
 	// recursos do miniframework
 	use MF\Controller\Action;
 	use MF\Model\Container;
+	
+	// PHPMAILER
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+
 
 	class IndexController extends Action{
 		public function index() {
@@ -81,6 +86,53 @@
 		}
 		public function cadastroConcluido(){
 			$this->render('/cadastro_concluido');
+		}
+		public function recuperarConta(){
+			$this->render('/recuperar_conta');
+		}
+		public function recuperandoConta(){			
+			$usuario = Container::getModel('Usuario');
+
+			$usuario->__set('email', $_GET['email']);
+			$emailCadastrado = $usuario->recuperarContaBD();
+
+			if($emailCadastrado != 0){
+					// ###################COLOCAR NA WEB PARA FUNCIONAR, AINDA NÃO TESTADO###################
+
+					// chave
+					$chave = md5(rand());
+
+					// chave no bd
+					$usuario->__set('chave_recuperacao', $chave);
+					$usuario->enviarChave();
+
+					// envio de email
+					// $de = "facilitaUDF@gmail.com";
+					// $titulo = "Recuperação de conta na Bambu";
+					// $msg = "<h3>Olá ".$emailCadastrado['nome']."</h3> <br/><br/> <p>Foi requisitada a alteração da senha na sua conta Bambu,<br/> confirme a alteração neste link <a href='"./recuperar_email?chave=$chave."'>RECUPERAR CONTA</a><br/> caso não tenha sido você o solicitante, por favor desconsidere este email.</p><p>Não responda esse email</p>";
+
+					// // use wordwrap() if lines are longer than 70 characters
+					// $msg = wordwrap($msg,70);
+
+					// $headers = "From: ".$_GET['email']."\r\n"."CC: ".$_GET['email'];
+
+					// mail($de,$titulo,$msg,$headers);
+
+					$this->render('recuperada_conta');
+			}
+		}
+		public function recuperarEmail(){
+			// passar email para db usuarios
+			$usuario = Container::getModel('Usuario');
+
+			$chavelink = $_GET['chave'];
+			$chaveemail = $usuario->validaEmail();
+			$chaveemail = $chaveemail['chave_recuperacao'];
+			if($chaveemail === $chavelink){
+				// redireciona para atualizar dados
+			}
+
+			$this->render('/recuperar_email');
 		}
 	}
 
