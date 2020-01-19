@@ -60,8 +60,23 @@ class Route extends Bootstrap {
 		);
 		$routes['editarSenha'] = array(
 			'route' => '/editar_senha',
-			'controller' => '/indexController',
+			'controller' => 'indexController',
 			'action' => 'editarSenha'
+		);
+		$routes['autenticar'] = array(
+			'route' => '/autenticar',
+			'controller' => 'AuthController',
+			'action' => 'autenticar'
+		);
+		$routes['painel'] = array(
+			'route' => '/painel',
+			'controller' => 'AppController',
+			'action' => 'painel'
+		);
+		$routes['sair'] = array(
+			'route' => '/sair',
+			'controller' => 'AppController',
+			'action' => 'sair'
 		);
 
 		$this->setRoutes($routes);

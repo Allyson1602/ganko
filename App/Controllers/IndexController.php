@@ -4,11 +4,6 @@
 	// recursos do miniframework
 	use MF\Controller\Action;
 	use MF\Model\Container;
-	
-	// PHPMAILER
-	use PHPMailer\PHPMailer\PHPMailer;
-	use PHPMailer\PHPMailer\Exception;
-
 
 	class IndexController extends Action{
 		public function index() {
@@ -96,6 +91,7 @@
 		public function recuperar(){
 			$this->render('/recuperar');
 		}
+		// mover para o authcontroller
 		public function recuperacao(){			
 			$usuario = Container::getModel('Usuario');
 

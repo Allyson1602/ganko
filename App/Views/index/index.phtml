@@ -7,20 +7,27 @@
 			<p>Banner</p>
 		</div>
 		<div class="col-lg d-flex justify-content-center align-items-center login">
-			<form method="POST" action="/validar" class="mb-3">
+			<form method="POST" action="/autenticar" class="mb-3">
 				<div class="box_login">
-					<label>login:</label>
+					<label class="text-success">login:</label>
 					<input type="text" name="login" placeholder="login ou email" />
 				</div>
 				<div class="box_senha">
-					<label>senha:</label>
+					<label class="text-success">senha:</label>
 					<input type="password" name="senha" placeholder="mínino 6 caracteres" />
 				</div>
 				<div class="box_entrar_esqueci">
 					<button type="submit">entrar</button>
-					<a href="/recuperar" class="recuperar">recuperar conta</a>
+					<a href="/recuperar" class="text-danger recuperar">recuperar conta</a>
 				</div>
-				<a href="/inscrever" class="cadastrar">cadastrar</a>
+
+				<?= 
+					isset($_GET['log']) ? print("<span class='text-danger'>login ou senha incorreto(s)</span>") : '';
+
+					isset($_GET['acessong']) ? print("<span class='text-danger'>acesso negado</span>") : ''; 
+				?>
+
+				<a href="/inscrever" class="text-success cadastrar">cadastrar</a>
 			</form>
 	</div>
 </div>

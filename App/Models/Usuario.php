@@ -91,6 +91,17 @@
 			return $this;
 		}
 
+
+		public function autenticar(){
+			$query = "SELECT id, nick, email FROM usuarios WHERE (nick = :nick OR email = :nick) AND senha = :senha";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':nick', $this->__get('nick'));
+			$stmt->bindValue(':senha', $this->__get('senha'));
+			$stmt->execute();
+
+			return $stmt->fetch(\PDO::FETCH_ASSOC);
+		}
+
 		// add kinesis
 		// INSERT INTO kinesis(id_usuario, tipo, kinesis) VALUEs(:id_usuario, :tipo, :kinesis);
 	}
