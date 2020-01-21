@@ -1,1 +1,80 @@
-<a href="/sair">sair</a>
+<a href="/sair">sair</a><br/>
+<a href="/perfil">perfil</a>
+
+<?php
+    if(isset($this->view->criarKinesis)){
+
+        if($this->view->criarKinesis){ 
+?>
+    
+        <form method="POST" action="/addKinesis">
+            <div class="box_primaria">
+                <label>Primária:</label>
+                <select name="primaria">
+                    <option value="nenhum">nenhum</option>
+                    <option value="Aerokinesis">Aerokinesis</option>
+                    <option value="Biokinesis">Biokinesis</option>
+                    <option value="Criokinesis">Criokinesis</option>
+                    <option value="Chronokinesis">Chronokinesis</option>
+                    <option value="Electrokinesis">Electrokinesis</option>
+                    <option value="Geokinesis">Geokinesis</option>
+                    <option value="Hidrokinesis">Hidrokinesis</option>
+                    <option value="Luminokinese">Luminokinese</option>
+                    <option value="Pyrokinese">Pyrokinese</option>
+                    <option value="Psicokinese">Psicokinese</option>
+                    <option value="Umbrakinesis ">Umbrakinesis </option>
+                    <option value="Atmokinese ">Atmokinese</option>
+                    <option value="Telecinese ">Telecinese</option>
+                </select>
+            </div>
+            <div class="box_secundaria">
+                <label for="nenhum">Nenhum</label>
+                <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum">
+    
+                <label for="Aerokinesis">Aerokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis">
+    
+                <label for="Biokinesis">Biokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis">
+    
+                <label for="Criokinesis">Criokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis">
+    
+                <label for="Chronokinesis">Chronokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis">
+    
+                <label for="Electrokinesis">Electrokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis">
+    
+                <label for="Geokinesis">Geokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis">
+    
+                <label for="Hidrokinesis">Hidrokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis">
+    
+                <label for="Luminokinese">Luminokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese">
+    
+                <label for="Pyrokinese">Pyrokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese">
+    
+                <label for="Psicokinese">Psicokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese">
+    
+                <label for="Umbrakinesis">Umbrakinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis">
+    
+                <label for="Atmokinese">Atmokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese">
+    
+                <label for="Telecinese">Telecinese</label>
+                <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese">
+            </div>
+            <div class="box_submit">
+                <button type="submit">enviar</button>
+            </div>
+        </form>
+<?php 
+        }
+    } 
+?>

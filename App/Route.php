@@ -78,7 +78,16 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'sair'
 		);
-
+		$routes['addKinesis'] = array(
+			'route' => '/addKinesis',
+			'controller' => 'AppController',
+			'action' => 'addKinesis'
+		);
+		$routes['perfil'] = array(
+			'route' => '/perfil',
+			'controller' => 'AppController',
+			'action' => 'perfil'
+		);
 		$this->setRoutes($routes);
 	}
 
