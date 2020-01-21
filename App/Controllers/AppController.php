@@ -48,11 +48,22 @@
 
             $usuario->__set('id', $_SESSION['id']);
             $kinesis->__set('id_usuario', $_SESSION['id']);
+
+            $usuario_kinesis = $kinesis->getAll();
+            $this->view->primaria = $usuario_kinesis[0]['primaria'];
+            array_shift($usuario_kinesis);
+            $this->view->secundaria = $usuario_kinesis;
+
             
             $this->view->dados_usuario = $usuario->getAll();
-            // $kinese = $kinesis->getAll();
-
+            // $this->view->kinese = $kinesis->getAll();
+            
             $this->render('perfil');
+        }
+        public function alterarDados(){
+            $this->validar();
+
+            $this->render('/alterar_dados');
         }
         
 

@@ -88,6 +88,11 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'perfil'
 		);
+		$routes['alterarDados'] = array(
+			'route' => '/alterar_dados',
+			'controller' => 'AppController',
+			'action' => 'alterarDados'
+		);
 		$this->setRoutes($routes);
 	}
 

@@ -5,14 +5,17 @@
         </div>
         <div class="col">
             <p><?= $this->view->dados_usuario['nome']; ?></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <p><?= $this->view->dados_usuario['sobrenome']; ?></p>
+            <p><?= $this->view->dados_usuario['nascimento']; ?></p>
+            <p><?= $this->view->dados_usuario['genero']; ?></p>
+            <p><?= $this->view->dados_usuario['comeco']; ?></p>
+            <p><?= $this->view->dados_usuario['nick']; ?></p>
+            <p><?= $this->view->dados_usuario['email']; ?></p>
+            <p><?= $this->view->primaria; ?></p>
+            <?php foreach($this->view->secundaria as $secundarias){ ?>
+                <p><?php print($secundarias['secundaria']); ?></p>
+            <?php } ?>
+            <a href="/alterar_dados">alterar dados</a>
         </div>
         <div class="col">
             
