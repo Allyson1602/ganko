@@ -22,13 +22,13 @@ VALIDAR EMAIL
 				<div class="box_genero">
 					<fieldset><label>gênero:</label>
 						<label for="masculino">masculino</label>
-						<input type="radio" name="genero" value="masculino" id="masculino" />
+						<input type="radio" name="genero" value="masculino" id="masculino" <?php $this->view->usuario['genero']=='masculino'? print('checked'):''; ?> />
 
 						<label for="feminino">feminino</label>
-						<input type="radio" name="genero" value="feminino" id="feminino" />
+						<input type="radio" name="genero" value="feminino" id="feminino" <?php $this->view->usuario['genero']=='feminino'? print('checked'):''; ?> />
 
 						<label for="outro">outro</label>
-						<input type="radio" name="genero" value="outro" id="outro" />
+						<input type="radio" name="genero" value="outro" id="outro" <?php $this->view->usuario['genero']=='outro'? print('checked'):''; ?> />
 					</fieldset>
 				</div>
 				<div class="box_login">

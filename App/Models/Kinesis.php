@@ -48,6 +48,14 @@
             // está retornando só as secundárias
             return $this;
         }
+        public function rmKinesis(){
+            $query = "DELETE FROM kinesis WHERE id_usuario = :id_usuario";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+            $stmt->execute();
+
+            return $this;
+        }
         public function getAll(){
             $query = "SELECT primaria, secundaria FROM kinesis WHERE id_usuario = :id_usuario";
             $stmt = $this->db->prepare($query);

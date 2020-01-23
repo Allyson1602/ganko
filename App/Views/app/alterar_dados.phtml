@@ -2,8 +2,110 @@
     <div class="row">
         <div class="col">
             <form method="POST" action="/editar_dados">
+                <div class="box_nascimento">
+					<label>data de nascimento:</label>
+					<input type="date" name="nascimento" value="<?= $this->view->usuario['nascimento']; ?>" />
+				</div>
+				<div class="box_genero">
+					<fieldset><label>gênero:</label>
+						<label for="masculino">masculino</label>
+						<input type="radio" name="genero" value="masculino" id="masculino" <?php $this->view->usuario['genero']=='masculino'? print('checked'):''; ?> />
 
+						<label for="feminino">feminino</label>
+						<input type="radio" name="genero" value="feminino" id="feminino" <?php $this->view->usuario['genero']=='feminino'? print('checked'):''; ?> />
+
+						<label for="outro">outro</label>
+						<input type="radio" name="genero" value="outro" id="outro" <?php $this->view->usuario['genero']=='outro'? print('checked'):''; ?>/>
+					</fieldset>
+				</div>
+				<div class="box_tempo">
+					<label>tempo de prática em kinesis:</label>
+					<input type="date" name="comeco" value="<?= $this->view->usuario['comeco']; ?>" />
+				</div>
+				<div class="box_login">
+					<label>login:</label>
+					<input type="text" name="login" value="<?= $this->view->usuario['nick']; ?>" maxlength="10" />
+				</div>
+				<div class="box_email">
+					<label>email:</label>
+					<input type="text" name="email" value="<?= $this->view->usuario['email']; ?>" maxlength="40" />
+				</div><div class="box_primaria">
+                <label>Primária:</label>
+                <select name="primaria">
+                    <option value="nenhum">nenhum</option>
+                    <option value="Aerokinesis">Aerokinesis</option>
+                    <option value="Biokinesis">Biokinesis</option>
+                    <option value="Criokinesis">Criokinesis</option>
+                    <option value="Chronokinesis">Chronokinesis</option>
+                    <option value="Electrokinesis">Electrokinesis</option>
+                    <option value="Geokinesis">Geokinesis</option>
+                    <option value="Hidrokinesis">Hidrokinesis</option>
+                    <option value="Luminokinese">Luminokinese</option>
+                    <option value="Pyrokinese">Pyrokinese</option>
+                    <option value="Psicokinese">Psicokinese</option>
+                    <option value="Umbrakinesis ">Umbrakinesis </option>
+                    <option value="Atmokinese ">Atmokinese</option>
+                    <option value="Telecinese ">Telecinese</option>
+                </select>
+            </div>
+            <div class="box_secundaria">
+                <label for="nenhum">Nenhum</label>
+                <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum">
+    
+                <label for="Aerokinesis">Aerokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis">
+    
+                <label for="Biokinesis">Biokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis">
+    
+                <label for="Criokinesis">Criokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis">
+    
+                <label for="Chronokinesis">Chronokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis">
+    
+                <label for="Electrokinesis">Electrokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis">
+    
+                <label for="Geokinesis">Geokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis">
+    
+                <label for="Hidrokinesis">Hidrokinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis">
+    
+                <label for="Luminokinese">Luminokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese">
+    
+                <label for="Pyrokinese">Pyrokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese">
+    
+                <label for="Psicokinese">Psicokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese">
+    
+                <label for="Umbrakinesis">Umbrakinesis</label>
+                <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis">
+    
+                <label for="Atmokinese">Atmokinese</label>
+                <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese">
+    
+                <label for="Telecinese">Telecinese</label>
+                <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese">
+            </div>
+                <div class="box_submit">
+                    <button type="submit">alterar</button>
+                </div>
+				<?php
+					if(isset($_GET['msg'])){
+						if($_GET['msg'] == 'nickExiste'){
+							echo 'login já existe';
+						}
+						if($_GET['msg'] == 'emailExiste'){
+							echo 'email já existe';
+						}
+					}
+				?>
             </form>
+			<a href="/painel">voltar</a>
         </div>
     </div>
 </div>

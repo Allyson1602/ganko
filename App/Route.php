@@ -93,6 +93,17 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'alterarDados'
 		);
+		$routes['editarDados'] = array(
+			'route' => '/editar_dados',
+			'controller' => 'AppController',
+			'action' => 'editarDados'
+		);
+		$routes['deletarConta'] = array(
+			'route' => '/deletar_conta',
+			'controller' => 'AppController',
+			'action' => 'deletarConta'
+		);
+		
 		$this->setRoutes($routes);
 	}
 

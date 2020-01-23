@@ -83,9 +83,10 @@
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
 		public function alterarSenha(){
-			$query = "UPDATE usuarios SET senha = ".md5($this->__get('senha'))." WHERE id = ".$_POST['id'];
+			$query = "UPDATE usuarios SET senha = :senha WHERE id = :id";
 			$stmt = $this->db->prepare($query);
-			$stmt->bindValue('', );
+			$stmt->bindValue(':senha', md5($this->__get('senha')));
+			$stmt->bindValue(':id', $_POST['id']);
 			$stmt->execute();
 
 			return $this;
@@ -98,20 +99,39 @@
 
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
+		public function editarDados(){
+			$query = "UPDATE usuarios SET nascimento = :nascimento, genero = :genero, comeco = :comeco, nick = :nick, email = :email WHERE id = :id";
+			$stmt = $this->db->prepare($query);
+
+			$stmt->bindValue(':nascimento', $this->__get('nascimento'));
+			$stmt->bindValue(':genero', $this->__get('genero'));
+			$stmt->bindValue(':comeco', $this->__get('comeco'));
+			$stmt->bindValue(':nick', $this->__get('nick'));
+			$stmt->bindValue(':email', $this->__get('email'));
+			$stmt->bindValue(':id', $this->__get('id'));
+
+			$stmt->execute();
+
+			return $this;
+		}
+		public function deletarConta(){
+			$query = "DELETE FROM usuarios WHERE id=:id";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':id', $this->__get('id'));
+			$stmt->execute();
+
+			return $this;
+		}
 
 
 		public function autenticar(){
 			$query = "SELECT id, nick, email FROM usuarios WHERE (nick = :nick OR email = :nick) AND senha = :senha";
 			$stmt = $this->db->prepare($query);
 			$stmt->bindValue(':nick', $this->__get('nick'));
-			$stmt->bindValue(':senha', $this->__get('senha'));
+			$stmt->bindValue(':senha', md5($this->__get('senha')));
 			$stmt->execute();
-
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
-
-		// add kinesis
-		// INSERT INTO kinesis(id_usuario, tipo, kinesis) VALUEs(:id_usuario, :tipo, :kinesis);
 	}
 
 ?>

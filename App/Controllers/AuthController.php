@@ -13,7 +13,6 @@
             $usuario = Container::getModel('Usuario');
 
             $usuario->__set('nick', $_POST['login']);
-            $usuario->__set('email', $_POST['login']);
             $usuario->__set('senha', md5($_POST['senha']));
 
             $log = $usuario->autenticar();
