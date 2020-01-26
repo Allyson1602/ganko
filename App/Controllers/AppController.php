@@ -9,6 +9,7 @@
         public function painel(){
             $this->validar();
             $this->validaKinesis();
+            $this->validaFoto();
 
             $this->render('/painel');
         }
@@ -23,9 +24,11 @@
             $kinesis = Container::getModel('Kinesis');
 
             $kinesis->__set('id_usuario', $_SESSION['id']);
+            
+            $this->view->criarKinesis = True;
 
-            if(!$kinesis->validaKinesis()){
-                $this->view->criarKinesis = True;
+            if(count($kinesis->validaKinesis())){
+                $this->view->criarKinesis = False;
             }
         }
         public function addKinesis(){
@@ -54,9 +57,7 @@
             array_shift($usuario_kinesis);
             $this->view->secundaria = $usuario_kinesis;
 
-            
             $this->view->dados_usuario = $usuario->getAll();
-            // $this->view->kinese = $kinesis->getAll();
             
             $this->render('perfil');
         }
@@ -87,7 +88,20 @@
             $kinesis->rmKinesis();
             // adiciona novas kinesis
             $kinesis->addKinesis();
+            
+            // FORMATO DE ARQUIVO
+            $extensao = $_FILES['foto']['type'];
+            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg'){
+                header('location: /painel?stt_upload=formato_bloqueado');
+            }
+            // LIMITE DE TAMANHO DO ARQUIVO
+            if($_FILES['foto']['size'] > 500000){
+                header('location: /painel?stt_upload=tamanho_exedido');
+            }
+            // MOVE ARQUIVOS PARA A PASTA IMG
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_FILES['foto']['name']);
 
+            $usuario->__set('foto', $_FILES['foto']['name']);
 			$usuario->__set('nascimento', $_POST['nascimento']);
 			$usuario->__set('genero', $_POST['genero']);
 			$usuario->__set('comeco', $_POST['comeco']);
@@ -104,9 +118,12 @@
 			if(count($usuario->emailExiste()) != 0){
                 return header('location: /alterar_dados?msg=emailExiste');
             }
+
+            // DELETA O ARQUIVO DA IMAGEM
+            unlink("img/".$usuario->validaFoto()['foto']);
             
             $usuario->editarDados();
-            
+
             return header('location: /perfil?msg=dadosAlt');
         }
         public function deletarConta(){
@@ -122,6 +139,43 @@
             $kinesis->rmKinesis();
 
             header('location: /?msg=deletada');
+        }
+        public function validaFoto(){
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('id', $_SESSION['id']);
+            
+            $this->view->validaFoto = True;
+
+            if(count($usuario->validaFoto()) == 1){
+                $this->view->validaFoto = False;
+            }
+        }
+        public function addImagem(){
+            $this->validar();
+
+            // FORMATO DE ARQUIVO
+            $extensao = $_FILES['foto']['type'];
+            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg'){
+                header('location: /painel?stt_upload=formato_bloqueado');
+            }
+            // LIMITE DE TAMANHO DO ARQUIVO
+            if($_FILES['foto']['size'] > 500000){
+                header('location: /painel?stt_upload=tamanho_exedido');
+            }
+
+            // MOVE ARQUIVOS PARA A PASTA IMG
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_FILES['foto']['name']);
+
+            // ADICIONA NO BD
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('id', $_SESSION['id']);
+            $usuario->__set('foto', $_FILES['foto']['name']);
+            $usuario->addFoto();
+
+            return header('location: /painel?stt_upload=ok');
+
+            // PARA VER A IMAGEM
+            // print("<img src='img/".$_FILES['foto']['name']."' />");
         }
         
 

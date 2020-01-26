@@ -103,6 +103,11 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'deletarConta'
 		);
+		$routes['addImagem'] = array(
+			'route' => '/add_imagem',
+			'controller' => 'AppController',
+			'action' => 'addImagem'
+		);
 		
 		$this->setRoutes($routes);
 	}

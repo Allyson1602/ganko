@@ -1,7 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form method="POST" action="/editar_dados">
+            <form method="POST" action="/editar_dados" enctype="multipart/form-data">
+                <div class="box_imagem">
+                    <label>foto de perfil:</label>
+                    <input type="file" name="foto" />
+                </div>
                 <div class="box_nascimento">
 					<label>data de nascimento:</label>
 					<input type="date" name="nascimento" value="<?= $this->view->usuario['nascimento']; ?>" />

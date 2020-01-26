@@ -1,9 +1,39 @@
 <a href="/sair">sair</a><br/>
 <a href="/perfil">perfil</a>
 
+
+<?php
+    if(isset($this->view->validaFoto)){
+        if($this->view->validaFoto){
+?>
+            <form method="POST" action="/add_imagem" enctype="multipart/form-data">
+                <div class="box_imagem">
+                    <label>foto de perfil:</label>
+                    <input type="file" name="foto" />
+                </div>
+                <div class="box_submit">
+                    <input type="submit" value="upload" name="submit">
+                </div>
+                <div class="box_msg">
+                    <?php
+                        if(isset($_GET['stt_upload'])){
+                            if($_GET['stt_upload'] == 'formato_bloqueado'){
+                                print("<p class='text-danger'>formato de arquivo não suportado</p>");
+                            }if($_GET['stt_upload'] == 'tamanho_exedido'){
+                                print("<p class='text-danger'>tamanho de arquivo exedido</p>");
+                            }
+                        }
+                    ?>
+                </div>
+            </form>
+<?php
+        }
+    }
+?>
+
+
 <?php
     if(isset($this->view->criarKinesis)){
-
         if($this->view->criarKinesis){ 
 ?>
     

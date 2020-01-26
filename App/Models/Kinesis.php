@@ -15,7 +15,7 @@
         }
 
         public function validaKinesis(){
-            $query = "SELECT id FROM kinesis WHERE id_usuario = :id_usuario";
+            $query = "SELECT primaria FROM kinesis WHERE id_usuario = :id_usuario";
             $stmt = $this->db->prepare($query);
             $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
             $stmt->execute();

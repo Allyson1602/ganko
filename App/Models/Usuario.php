@@ -6,7 +6,7 @@
 
 	class Usuario extends Model{
 		private $id, $nome, $sobrenome, $nascimento, $genero, $comeco, $senha, 
-		$nick, $email, $chave_recuperacao;
+		$nick, $email, $foto, $chave_recuperacao;
 
 		public function __get($atributo){
 			return $this->$atributo;
@@ -92,7 +92,7 @@
 			return $this;
 		}
         public function getAll(){
-            $query = "SELECT nome, sobrenome, nascimento, genero, comeco, nick, email FROM usuarios WHERE id=:id";
+            $query = "SELECT nome, sobrenome, nascimento, genero, comeco, nick, email, foto FROM usuarios WHERE id=:id";
             $stmt = $this->db->prepare($query);
 			$stmt->bindValue(':id', $this->__get('id'));
 			$stmt->execute();
@@ -100,7 +100,11 @@
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
 		}
 		public function editarDados(){
-			$query = "UPDATE usuarios SET nascimento = :nascimento, genero = :genero, comeco = :comeco, nick = :nick, email = :email WHERE id = :id";
+			if($this->__get('foto') == ''){
+				$this->__set('foto', $this->validaFoto()['foto']);
+			}
+
+			$query = "UPDATE usuarios SET nascimento = :nascimento, genero = :genero, comeco = :comeco, nick = :nick, email = :email, foto = :foto WHERE id = :id";
 			$stmt = $this->db->prepare($query);
 
 			$stmt->bindValue(':nascimento', $this->__get('nascimento'));
@@ -108,6 +112,7 @@
 			$stmt->bindValue(':comeco', $this->__get('comeco'));
 			$stmt->bindValue(':nick', $this->__get('nick'));
 			$stmt->bindValue(':email', $this->__get('email'));
+			$stmt->bindValue(':foto', $this->__get('foto'));
 			$stmt->bindValue(':id', $this->__get('id'));
 
 			$stmt->execute();
@@ -117,6 +122,23 @@
 		public function deletarConta(){
 			$query = "DELETE FROM usuarios WHERE id=:id";
 			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':id', $this->__get('id'));
+			$stmt->execute();
+
+			return $this;
+		}
+		public function validaFoto(){
+            $query = "SELECT foto FROM usuarios WHERE id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id', $this->__get('id'));
+            $stmt->execute();
+
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+		}
+		public function addFoto(){
+			$query = "UPDATE usuarios SET foto = :foto WHERE id = :id";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':foto', $this->__get('foto'));
 			$stmt->bindValue(':id', $this->__get('id'));
 			$stmt->execute();
 
