@@ -88,10 +88,17 @@
             $kinesis->rmKinesis();
             // adiciona novas kinesis
             $kinesis->addKinesis();
+
+            // VERIFICA SE PRIMARIA E SECUNDARIA SÃO IGUAIS
+            foreach($_POST['secundaria'] as $ki_secundaria){
+                if($_POST['primaria'] == $ki_secundaria){
+                    header('location: /alterar_dados?msg=kinesis_iguais');
+                }
+            }
             
             // FORMATO DE ARQUIVO
             $extensao = $_FILES['foto']['type'];
-            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg'){
+            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != ''){
                 header('location: /painel?stt_upload=formato_bloqueado');
             }
             // LIMITE DE TAMANHO DO ARQUIVO
@@ -118,9 +125,6 @@
 			if(count($usuario->emailExiste()) != 0){
                 return header('location: /alterar_dados?msg=emailExiste');
             }
-
-            // DELETA O ARQUIVO DA IMAGEM
-            unlink("img/".$usuario->validaFoto()['foto']);
             
             $usuario->editarDados();
 

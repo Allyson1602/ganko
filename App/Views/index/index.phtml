@@ -21,10 +21,13 @@
 					<a href="/recuperar" class="text-danger recuperar">recuperar conta</a>
 				</div>
 
-				<?= 
-					isset($_GET['log']) ? print("<span class='text-danger'>login ou senha incorreto(s)</span>") : '';
-
-					isset($_GET['acessong']) ? print("<span class='text-danger'>acesso negado</span>") : ''; 
+				<?php
+					if(isset($_GET['log'])){
+						print("<span class='text-danger'>login ou senha incorreto(s)</span>");
+					}
+					if(isset($_GET['acessong'])){
+						print("<span class='text-danger'>acesso negado</span>");
+					} 
 				?>
 
 				<a href="/inscrever" class="text-success cadastrar">cadastrar</a>

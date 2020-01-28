@@ -36,64 +36,35 @@
 				</div><div class="box_primaria">
                 <label>Primária:</label>
                 <select name="primaria">
-                    <option value="nenhum">nenhum</option>
-                    <option value="Aerokinesis">Aerokinesis</option>
-                    <option value="Biokinesis">Biokinesis</option>
-                    <option value="Criokinesis">Criokinesis</option>
-                    <option value="Chronokinesis">Chronokinesis</option>
-                    <option value="Electrokinesis">Electrokinesis</option>
-                    <option value="Geokinesis">Geokinesis</option>
-                    <option value="Hidrokinesis">Hidrokinesis</option>
-                    <option value="Luminokinese">Luminokinese</option>
-                    <option value="Pyrokinese">Pyrokinese</option>
-                    <option value="Psicokinese">Psicokinese</option>
-                    <option value="Umbrakinesis ">Umbrakinesis </option>
-                    <option value="Atmokinese ">Atmokinese</option>
-                    <option value="Telecinese ">Telecinese</option>
+                    <option value="Aerokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='AeroKinesis'?'selected':''; ?> >Aerokinesis</option>
+                    <option value="Biokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Biokinesis'?'selected':''; ?> >Biokinesis</option>
+                    <option value="Criokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Criokinesis'?'selected':''; ?> >Criokinesis</option>
+                    <option value="Chronokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Chronokinesis'?'selected':''; ?> >Chronokinesis</option>
+                    <option value="Electrokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Electrokinesis'?'selected':''; ?> >Electrokinesis</option>
+                    <option value="Geokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Geokinesis'?'selected':''; ?> >Geokinesis</option>
+                    <option value="Hidrokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Hidrokinesis'?'selected':''; ?> >Hidrokinesis</option>
+                    <option value="Luminokinese" <?= $this->view->kinesis_alt[0]['primaria']=='Luminokinese'?'selected':''; ?> >Luminokinese</option>
+                    <option value="Pyrokinese" <?= $this->view->kinesis_alt[0]['primaria']=='Pyrokinese'?'selected':''; ?> >Pyrokinese</option>
+                    <option value="Psicokinese" <?= $this->view->kinesis_alt[0]['primaria']=='Psicokinese'?'selected':''; ?> >Psicokinese</option>
+                    <option value="Umbrakinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Umbrakinesis'?'selected':''; ?> >Umbrakinesis </option>
+                    <option value="Atmokinese" <?= $this->view->kinesis_alt[0]['primaria']=='Atmokinese'?'selected':''; ?> >Atmokinese</option>
+                    <option value="Telecinese" <?= $this->view->kinesis_alt[0]['primaria']=='Telecinese'?'selected':''; ?> >Telecinese</option>
                 </select>
             </div>
             <div class="box_secundaria">
-                <label for="nenhum">Nenhum</label>
-                <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum">
-    
-                <label for="Aerokinesis">Aerokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis">
-    
-                <label for="Biokinesis">Biokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis">
-    
-                <label for="Criokinesis">Criokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis">
-    
-                <label for="Chronokinesis">Chronokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis">
-    
-                <label for="Electrokinesis">Electrokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis">
-    
-                <label for="Geokinesis">Geokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis">
-    
-                <label for="Hidrokinesis">Hidrokinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis">
-    
-                <label for="Luminokinese">Luminokinese</label>
-                <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese">
-    
-                <label for="Pyrokinese">Pyrokinese</label>
-                <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese">
-    
-                <label for="Psicokinese">Psicokinese</label>
-                <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese">
-    
-                <label for="Umbrakinesis">Umbrakinesis</label>
-                <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis">
-    
-                <label for="Atmokinese">Atmokinese</label>
-                <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese">
-    
-                <label for="Telecinese">Telecinese</label>
-                <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese">
+            <?php
+            // verificar se kinesis é primária com js(já verificado com php)!!
+
+
+                $kinesis = ['nenhum', 'Aerokinesis', 'Biokinesis', 'Criokinesis', 'Chronokinesis', 'Electrokinesis', 'Geokinesis', 'Hidrokinesis', 'Luminokinese', 'Pyrokinese', 'Psicokinese', 'Umbrakinesis', 'Atmokinese', 'Telecinese'];
+
+                array_shift($this->view->kinesis_alt);
+
+                foreach($kinesis as $kinese){
+                    ?>
+                        <label for='<?= $kinese; ?>'><?= $kinese; ?></label>
+                        <input type='checkbox' name='secundaria[]' value='<?= $kinese; ?>' id='<?= $kinese; ?>' 
+                        <?php foreach($this->view->kinesis_alt as $dados_kinesis){ if($dados_kinesis['secundaria'] == $kinese){ echo "checked"; } }?> /> <?php } ?>
             </div>
                 <div class="box_submit">
                     <button type="submit">alterar</button>
@@ -101,11 +72,14 @@
 				<?php
 					if(isset($_GET['msg'])){
 						if($_GET['msg'] == 'nickExiste'){
-							echo 'login já existe';
+							echo '<small class="text-danger">login já existe</small>';
 						}
 						if($_GET['msg'] == 'emailExiste'){
-							echo 'email já existe';
-						}
+							echo '<small class="text-danger">email já existe</small>';
+                        }
+                        if($_GET['msg'] == 'kinesis_iguais'){
+                            echo '<small class="text-danger">kinese primária igual a secundária</small>';
+                        }
 					}
 				?>
             </form>

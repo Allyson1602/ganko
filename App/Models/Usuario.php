@@ -102,6 +102,9 @@
 		public function editarDados(){
 			if($this->__get('foto') == ''){
 				$this->__set('foto', $this->validaFoto()['foto']);
+			}else{
+				// DELETA O ARQUIVO DA IMAGEM
+				unlink("img/".$this->validaFoto()['foto']);	
 			}
 
 			$query = "UPDATE usuarios SET nascimento = :nascimento, genero = :genero, comeco = :comeco, nick = :nick, email = :email, foto = :foto WHERE id = :id";

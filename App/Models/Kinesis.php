@@ -23,6 +23,10 @@
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         }
         public function addKinesis(){
+            if($this->__get('_secundaria') == ''){
+                $this->__set('_secundaria', $this->getAll()['secundaria']);
+            }
+
             // primaria
             $query = "INSERT INTO kinesis(id_usuario, primaria) VALUES(:id_usuario, :primaria)";
             $stmt = $this->db->prepare($query);
