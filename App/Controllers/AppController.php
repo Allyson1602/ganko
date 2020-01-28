@@ -106,9 +106,10 @@
                 header('location: /painel?stt_upload=tamanho_exedido');
             }
             // MOVE ARQUIVOS PARA A PASTA IMG
-            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_FILES['foto']['name']);
+            date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
 
-            $usuario->__set('foto', $_FILES['foto']['name']);
+            $usuario->__set('foto', $_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
 			$usuario->__set('nascimento', $_POST['nascimento']);
 			$usuario->__set('genero', $_POST['genero']);
 			$usuario->__set('comeco', $_POST['comeco']);
@@ -119,10 +120,10 @@
 			$this->view->loginExiste = false;
 			$this->view->emailExiste = false;
 
-			if(count($usuario->nickExiste()) != 0){
+			if(count($usuario->nickExiste()) != 0 && $usuario->nickExiste()[0]['nick'] != $_SESSION['nick']){
                 return header('location: /alterar_dados?msg=nickExiste');
 			}
-			if(count($usuario->emailExiste()) != 0){
+			if(count($usuario->emailExiste()) != 0 && $usuario->emailExiste()[0]['email'] != $_SESSION['email']){
                 return header('location: /alterar_dados?msg=emailExiste');
             }
             
