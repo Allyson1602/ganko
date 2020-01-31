@@ -108,6 +108,16 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'addImagem'
 		);
+		$routes['setPost'] = array(
+			'route' => '/set_post',
+			'controller' => 'AppController',
+			'action' => 'setPost'
+		);
+		$routes['getPost'] = array(
+			'route' => '/get_post',
+			'controller' => 'AppController',
+			'action' => 'getPost'
+		);
 		
 		$this->setRoutes($routes);
 	}

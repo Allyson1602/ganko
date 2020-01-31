@@ -10,6 +10,7 @@
             $this->validar();
             $this->validaKinesis();
             $this->validaFoto();
+            $this->getPost();
 
             $this->render('/painel');
         }
@@ -27,7 +28,7 @@
             
             $this->view->criarKinesis = True;
 
-            if(count($kinesis->validaKinesis())){
+            if($kinesis->validaKinesis()['primaria'] != ''){
                 $this->view->criarKinesis = False;
             }
         }
@@ -92,24 +93,30 @@
             // VERIFICA SE PRIMARIA E SECUNDARIA SÃO IGUAIS
             foreach($_POST['secundaria'] as $ki_secundaria){
                 if($_POST['primaria'] == $ki_secundaria){
-                    header('location: /alterar_dados?msg=kinesis_iguais');
+                    return header('location: /alterar_dados?msg=kinesis_iguais');
                 }
             }
             
             // FORMATO DE ARQUIVO
             $extensao = $_FILES['foto']['type'];
             if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != ''){
-                header('location: /painel?stt_upload=formato_bloqueado');
+                return header('location: /alterar_dados?stt_upload=formato_bloqueado');
             }
+            print $extensao;
             // LIMITE DE TAMANHO DO ARQUIVO
             if($_FILES['foto']['size'] > 500000){
-                header('location: /painel?stt_upload=tamanho_exedido');
+                return header('location: /alterar_dados?stt_upload=tamanho_exedido');
             }
             // MOVE ARQUIVOS PARA A PASTA IMG
             date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
-            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+            if($_FILES['foto']['name'] != ''){
+                $nome_foto = $_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+            }else{ 
+                $nome_foto = '';
+            }
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/perfil/'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
 
-            $usuario->__set('foto', $_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
+            $usuario->__set('foto', $nome_foto);
 			$usuario->__set('nascimento', $_POST['nascimento']);
 			$usuario->__set('genero', $_POST['genero']);
 			$usuario->__set('comeco', $_POST['comeco']);
@@ -151,7 +158,7 @@
             
             $this->view->validaFoto = True;
 
-            if(count($usuario->validaFoto()) == 1){
+            if($usuario->validaFoto()['foto'] != ''){
                 $this->view->validaFoto = False;
             }
         }
@@ -178,9 +185,33 @@
             $usuario->addFoto();
 
             return header('location: /painel?stt_upload=ok');
+        }
+        public function setPost(){
+            $this->validar();
 
-            // PARA VER A IMAGEM
-            // print("<img src='img/".$_FILES['foto']['name']."' />");
+            $post = Container::getModel('Post');
+
+            $post->__set('id_usuario', $_SESSION['id']);
+            $post->__set('texto', $_POST['post_texto']);
+            $post->__set('imagem', $_POST['post_imagem']);
+            $post->__set('video', $_POST['post_video']);
+
+            $post->addPost();
+
+            return header('location: /painel?msg=postado');
+        }
+        public function getPost(){
+            $post = Container::getModel('Post');
+            $usuario = Container::getModel('Usuario');
+
+            $this->view->postagens = $post->getAll();
+            $this->view->usuarios = $usuario->pegarTodos();
+
+            // echo '<pre>';
+            // print_r($usuario->pegarTodos());
+            // echo '<pre>';
+
+            ## mostrar os dados dos usuários ##
         }
         
 

@@ -80,6 +80,14 @@
                         if($_GET['msg'] == 'kinesis_iguais'){
                             echo '<small class="text-danger">kinese secundária igual a primária</small>';
                         }
+                        // recebendo no painel
+                        if($_GET['msg'] == 'formato_bloqueado'){
+                            echo '<small class="text-danger">formato de arquivo não suportado</small>';
+                        }
+                        if($_GET['msg'] == 'tamanho_exedido'){
+                            echo '<small class="text-danger">tamanho do arquivo exedido</small>';
+                        }
+                        // recebendo no painel
 					}
 				?>
             </form>

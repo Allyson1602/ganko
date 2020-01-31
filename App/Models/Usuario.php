@@ -1,5 +1,4 @@
 <?php
-// TABELA secundaria NÃO RECEBE VALORES
 	namespace App\Models;
 
 	use MF\Model\Model;
@@ -92,7 +91,7 @@
 			return $this;
 		}
         public function getAll(){
-            $query = "SELECT nome, sobrenome, nascimento, genero, comeco, nick, email, foto FROM usuarios WHERE id=:id";
+            $query = "SELECT nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, comeco, nick, email, foto FROM usuarios WHERE id=:id";
             $stmt = $this->db->prepare($query);
 			$stmt->bindValue(':id', $this->__get('id'));
 			$stmt->execute();
@@ -104,8 +103,9 @@
 				$this->__set('foto', $this->validaFoto()['foto']);
 			}else{
 				// DELETA O ARQUIVO DA IMAGEM
-				unlink("img/".$this->validaFoto()['foto']);	
+				unlink("img/perfil/".$this->validaFoto()['foto']);	
 			}
+			print($this->__get('foto'));
 
 			$query = "UPDATE usuarios SET nascimento = :nascimento, genero = :genero, comeco = :comeco, nick = :nick, email = :email, foto = :foto WHERE id = :id";
 			$stmt = $this->db->prepare($query);
@@ -146,6 +146,13 @@
 			$stmt->execute();
 
 			return $this;
+		}
+        public function pegarTodos(){
+            $query = "SELECT nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, comeco, nick, email, foto FROM usuarios";
+            $stmt = $this->db->prepare($query);
+			$stmt->execute();
+
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		}
 
 
