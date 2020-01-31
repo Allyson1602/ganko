@@ -91,7 +91,7 @@
 			return $this;
 		}
         public function getAll(){
-            $query = "SELECT nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, comeco, nick, email, foto FROM usuarios WHERE id=:id";
+            $query = "SELECT nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, DATE_FORMAT(comeco, '%d/%m/%Y') AS comeco, nick, email, foto FROM usuarios WHERE id=:id";
             $stmt = $this->db->prepare($query);
 			$stmt->bindValue(':id', $this->__get('id'));
 			$stmt->execute();
@@ -148,7 +148,7 @@
 			return $this;
 		}
         public function pegarTodos(){
-            $query = "SELECT nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, comeco, nick, email, foto FROM usuarios";
+            $query = "SELECT nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, DATE_FORMAT(comeco, '%d/%m/%Y') AS comeco, nick, email, foto FROM usuarios";
             $stmt = $this->db->prepare($query);
 			$stmt->execute();
 

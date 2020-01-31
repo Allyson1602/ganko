@@ -8,11 +8,11 @@
                     }
                 }
             ?>
-			<a href="/painel">voltar</a>
+			<a href="/painel">voltar</a><br/>
             <a href="/deletar_conta">deletar conta</a>
         </div>
         <div class="col">
-            <img src="img/perfil/<?= $this->view->dados_usuario['foto']; ?>" class="img-fluid" />
+            <img src="img/perfil/<?= $this->view->dados_usuario['foto']; ?>" class="img-fluid" style="width:300px;" />
             <p><?= $this->view->dados_usuario['nome']; ?></p>
             <p><?= $this->view->dados_usuario['sobrenome']; ?></p>
             <p><?= $this->view->dados_usuario['nascimento']; ?></p>

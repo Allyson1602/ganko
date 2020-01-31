@@ -10,7 +10,7 @@
             $this->validar();
             $this->validaKinesis();
             $this->validaFoto();
-            // $this->getPost();
+            $this->getPost();
 
             $this->render('/painel');
         }
@@ -204,59 +204,35 @@
         }
         public function setPost(){
             $this->validar();
-            /////////////////////////////   IMAGEM   /////////////////////////////
+            
             // FORMATO DE ARQUIVO
-            $extensao = $_FILES['post_imagem']['type'];
-            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg'){
-                // return header('location: /painel?msg=formato_bloqueado');
+            $extensao = $_FILES['post_arquivo']['type'];
+            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != 'video/mp4'){
+                return header('location: /painel?msg=formato_bloqueado');
             }
             // LIMITE DE TAMANHO DO ARQUIVO
-            if($_FILES['post_imagem']['size'] > 500000){
+            if($_FILES['post_arquivo']['size'] > 5000000){
                 return header('location: /painel?msg=tamanho_exedido');
             }
 
             // MOVE ARQUIVOS PARA A PASTA IMG
             date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
-            if($_FILES['post_imagem']['name'] != ''){
-                $nome_imagem = 'post_'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['post_imagem']['name'], PATHINFO_EXTENSION);
+            if($_FILES['post_arquivo']['name'] != ''){
+                $nome_arquivo = 'post_'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['post_arquivo']['name'], PATHINFO_EXTENSION);
             }else{ 
-                $nome_imagem = '';
+                $nome_arquivo = '';
             }
-            move_uploaded_file($_FILES['post_imagem']['tmp_name'], 'post/imagem/'.$nome_imagem);
-            /////////////////////////////   IMAGEM   /////////////////////////////
-            
-            /////////////////////////////   VIDEO   /////////////////////////////
-            // FORMATO DE ARQUIVO
-            $extensao = $_FILES['post_video']['type'];
-            if($extensao != 'video/mp4'){
-                // return header('location: /painel?msg=formato_bloqueado');
-            }
-            // LIMITE DE TAMANHO DO ARQUIVO
-            if($_FILES['post_video']['size'] > 5000000){
-                return header('location: /painel?msg=tamanho_exedido');
-            }
-
-            // MOVE ARQUIVOS PARA A PASTA VIDEO
-            date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
-            if($_FILES['post_video']['name'] != ''){
-                $nome_video = 'post_'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['post_video']['name'], PATHINFO_EXTENSION);
-            }else{ 
-                $nome_video = '';
-            }
-            // CAMINHO ARQUIVO PODE ESTAR ERRADO
-            move_uploaded_file($_FILES['post_video']['tmp_name'], 'post/video/'.$nome_video);
-            ///////////////////////////   VIDEO   /////////////////////////////
+            move_uploaded_file($_FILES['post_arquivo']['tmp_name'], 'post/'.$nome_arquivo);
 
             // ADICIONA NO BD
             $post = Container::getModel('Post');
             $post->__set('id_usuario', $_SESSION['id']);
             $post->__set('texto', $_POST['post_texto']);
-            $post->__set('imagem', $nome_imagem);
-            $post->__set('video', $nome_video);
+            $post->__set('arquivo', $nome_arquivo);
 
-            echo '<pre>';
-            print_r($_FILES);
-            echo '<pre>';
+            // echo '<pre>';
+            // print_r($_FILES);
+            // echo '<pre>';
 
             $post->addPost();
 
@@ -264,16 +240,12 @@
         }
         public function getPost(){
             $post = Container::getModel('Post');
-            $usuario = Container::getModel('Usuario');
 
             $this->view->postagens = $post->getAll();
-            $this->view->usuarios = $usuario->pegarTodos();
 
             // echo '<pre>';
-            // print_r($usuario->pegarTodos());
+            // print_r($post->getAll());
             // echo '<pre>';
-
-            ## mostrar os dados dos usuários ##
         }
         
 
