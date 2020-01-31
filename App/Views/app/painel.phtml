@@ -6,6 +6,15 @@
         if($_GET['msg'] == 'postado'){
             echo "<p>postagem concluída</p>";
         }
+        if($_GET['msg'] == 'adicionar_kinese'){
+            echo "<p>antes de alterar os dados informe suas kinesis</p>";
+        }
+        if($_GET['msg'] == 'formato_bloqueado'){
+            print("<p class='text-danger'>formato de arquivo não suportado</p>");
+        }
+        if($_GET['msg'] == 'tamanho_exedido'){
+            print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
+        }
     }
 ?>
 
@@ -28,7 +37,7 @@
                                 if($_GET['stt_upload'] == 'formato_bloqueado'){
                                     print("<p class='text-danger'>formato de arquivo não suportado</p>");
                                 }if($_GET['stt_upload'] == 'tamanho_exedido'){
-                                    print("<p class='text-danger'>tamanho de arquivo exedido</p>");
+                                    print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
                                 }
                             }
                         ?>
@@ -119,7 +128,7 @@
 </div>
 
 <div class="post">
-    <form method="POST" action="/set_post" enctype="multipart-form-data">
+    <form method="POST" action="/set_post" enctype="multipart/form-data">
         <div class="box_texto">
             <textarea name="post_texto"></textarea>
         </div>
@@ -138,16 +147,16 @@
 </div>
 <div class="postagens">
     <?php
-        foreach($this->view->postagens AS $postagem){
-            print("
-                <div class='postagem'>
-                    <!-- deixar tag dinâmica para arquivo -->
-                    <img src='img/wallpaper.jpeg' class='postagem' style='width:300;' />
-                    <p>".$postagem['texto']."</p>
-                    <img src='sdasds' class='imagem_usuario_publicacao' />
-                    <p>nome usuário</p>
-                </div>
-            ");
-        }
+        // foreach($this->view->postagens AS $postagem){
+        //     print("
+        //         <div class='postagem'>
+        //             <!-- deixar tag dinâmica para arquivo -->
+        //             <img src='img/wallpaper.jpeg' class='postagem' style='width:300;' />
+        //             <p>".$postagem['texto']."</p>
+        //             <img src='sdasds' class='imagem_usuario_publicacao' />
+        //             <p>nome usuário</p>
+        //         </div>
+        //     ");
+        // }
     ?>
 </div>

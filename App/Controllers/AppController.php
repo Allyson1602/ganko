@@ -10,7 +10,7 @@
             $this->validar();
             $this->validaKinesis();
             $this->validaFoto();
-            $this->getPost();
+            // $this->getPost();
 
             $this->render('/painel');
         }
@@ -53,10 +53,16 @@
             $usuario->__set('id', $_SESSION['id']);
             $kinesis->__set('id_usuario', $_SESSION['id']);
 
-            $usuario_kinesis = $kinesis->getAll();
-            $this->view->primaria = $usuario_kinesis[0]['primaria'];
-            array_shift($usuario_kinesis);
-            $this->view->secundaria = $usuario_kinesis;
+            $this->view->kinesis_existem = False;
+            if(count($kinesis->getAll()) != 0){
+                $usuario_kinesis = $kinesis->getAll();
+
+                $this->view->primaria = $usuario_kinesis[0]['primaria'];
+                array_shift($usuario_kinesis);
+                $this->view->secundaria = $usuario_kinesis;
+
+                $this->view->kinesis_existem = True;
+            }
 
             $this->view->dados_usuario = $usuario->getAll();
             
@@ -74,7 +80,11 @@
             $kinesis->__set('id_usuario', $_SESSION['id']);
             $this->view->kinesis_alt = $kinesis->getAll();
 
-            $this->render('/alterar_dados');
+            if(count($kinesis->getAll()) == 0){
+                return header('location: /painel?msg=adicionar_kinese');
+            }
+
+            return $this->render('/alterar_dados');
         }
         public function editarDados(){
             $this->validar();
@@ -176,25 +186,77 @@
             }
 
             // MOVE ARQUIVOS PARA A PASTA IMG
-            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/'.$_FILES['foto']['name']);
+            date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
+            if($_FILES['foto']['name'] != ''){
+                $nome_foto = $_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+            }else{ 
+                $nome_foto = '';
+            }
+            move_uploaded_file($_FILES['foto']['tmp_name'], 'img/perfil/'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION));
 
             // ADICIONA NO BD
             $usuario = Container::getModel('Usuario');
             $usuario->__set('id', $_SESSION['id']);
-            $usuario->__set('foto', $_FILES['foto']['name']);
+            $usuario->__set('foto', $nome_foto);
             $usuario->addFoto();
 
             return header('location: /painel?stt_upload=ok');
         }
         public function setPost(){
             $this->validar();
+            /////////////////////////////   IMAGEM   /////////////////////////////
+            // FORMATO DE ARQUIVO
+            $extensao = $_FILES['post_imagem']['type'];
+            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg'){
+                // return header('location: /painel?msg=formato_bloqueado');
+            }
+            // LIMITE DE TAMANHO DO ARQUIVO
+            if($_FILES['post_imagem']['size'] > 500000){
+                return header('location: /painel?msg=tamanho_exedido');
+            }
 
+            // MOVE ARQUIVOS PARA A PASTA IMG
+            date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
+            if($_FILES['post_imagem']['name'] != ''){
+                $nome_imagem = 'post_'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['post_imagem']['name'], PATHINFO_EXTENSION);
+            }else{ 
+                $nome_imagem = '';
+            }
+            move_uploaded_file($_FILES['post_imagem']['tmp_name'], 'post/imagem/'.$nome_imagem);
+            /////////////////////////////   IMAGEM   /////////////////////////////
+            
+            /////////////////////////////   VIDEO   /////////////////////////////
+            // FORMATO DE ARQUIVO
+            $extensao = $_FILES['post_video']['type'];
+            if($extensao != 'video/mp4'){
+                // return header('location: /painel?msg=formato_bloqueado');
+            }
+            // LIMITE DE TAMANHO DO ARQUIVO
+            if($_FILES['post_video']['size'] > 5000000){
+                return header('location: /painel?msg=tamanho_exedido');
+            }
+
+            // MOVE ARQUIVOS PARA A PASTA VIDEO
+            date_default_timezone_set("Brazil/East");// DATA E HORA ACERTADAS
+            if($_FILES['post_video']['name'] != ''){
+                $nome_video = 'post_'.$_SESSION['nick'].date("dmYHis").'.'.pathinfo($_FILES['post_video']['name'], PATHINFO_EXTENSION);
+            }else{ 
+                $nome_video = '';
+            }
+            // CAMINHO ARQUIVO PODE ESTAR ERRADO
+            move_uploaded_file($_FILES['post_video']['tmp_name'], 'post/video/'.$nome_video);
+            ///////////////////////////   VIDEO   /////////////////////////////
+
+            // ADICIONA NO BD
             $post = Container::getModel('Post');
-
             $post->__set('id_usuario', $_SESSION['id']);
             $post->__set('texto', $_POST['post_texto']);
-            $post->__set('imagem', $_POST['post_imagem']);
-            $post->__set('video', $_POST['post_video']);
+            $post->__set('imagem', $nome_imagem);
+            $post->__set('video', $nome_video);
+
+            echo '<pre>';
+            print_r($_FILES);
+            echo '<pre>';
 
             $post->addPost();
 

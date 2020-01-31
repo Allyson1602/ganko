@@ -20,10 +20,15 @@
             <p><?= $this->view->dados_usuario['comeco']; ?></p>
             <p><?= $this->view->dados_usuario['nick']; ?></p>
             <p><?= $this->view->dados_usuario['email']; ?></p>
-            <p><?= $this->view->primaria; ?></p>
-            <?php foreach($this->view->secundaria as $secundarias){ ?>
-                <p><?php print($secundarias['secundaria']); ?></p>
-            <?php } ?>
+            <?php
+                if($this->view->kinesis_existem){
+                    print("<p>".$this->view->primaria."</p>");
+
+                    foreach($this->view->secundaria as $secundarias){
+                        print("<p>".$secundarias['secundaria']."</p>");
+                    }
+                }
+            ?>
             <a href="/alterar_dados">alterar dados</a>
         </div>
         <div class="col">
