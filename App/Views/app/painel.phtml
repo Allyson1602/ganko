@@ -144,15 +144,30 @@
 <div class="postagens">
     <?php
         foreach($this->view->postagens AS $postagem){
-            print("
-                <div class='postagem'>
-                    <!-- deixar tag dinâmica para arquivo -->
-                    <img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />
-                    <p>".$postagem['texto']."</p>
-                    <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
-                    <p>".$postagem['nome_usuario']."</p>
-                </div>
-            ");
+            $extensao = explode(".", $postagem['arquivo']);
+
+            print("<div class='postagem'>");
+            
+                if($extensao[1] == 'jpg' || $extensao[1] == 'jpeg' || $extensao[1] == 'gif' || $extensao[1] == 'apng' || $extensao[1] == 'svg'){
+                    print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
+                }
+                if($extensao[1] == 'mp4' || $extensao[1] == 'webm' || $extensao[1] == 'ogg' || $extensao[1] == 'svg'){
+                    print("
+                        <video width='300' controls>
+                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
+                        </video>");
+                }
+                if($extensao[1] == 'mp3' || $extensao[1] == 'wave' || $extensao[1] == 'wav'){
+                    print("
+                        <audio controls>
+                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio
+                        </audio>
+                    ");
+                }
+                print("<p>".$postagem['texto']."</p>
+                <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
+                <p>".$postagem['nome_usuario']."</p>
+            </div>");
         }
     ?>
 </div>
