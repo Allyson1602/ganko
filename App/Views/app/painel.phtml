@@ -4,16 +4,19 @@
 <?php
     if(isset($_GET['msg'])){
         if($_GET['msg'] == 'postado'){
-            echo "<p>postagem concluída</p>";
+            echo "<p class='text-success'>postagem concluída</p>";
         }
         if($_GET['msg'] == 'adicionar_kinese'){
-            echo "<p>antes de alterar os dados informe suas kinesis</p>";
+            echo "<p class='text-danger'>antes de alterar os dados informe suas kinesis</p>";
         }
         if($_GET['msg'] == 'formato_bloqueado'){
             print("<p class='text-danger'>formato de arquivo não suportado</p>");
         }
         if($_GET['msg'] == 'tamanho_exedido'){
             print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
+        }
+        if($_GET['msg'] == 'postVazio'){
+            print("<p class='text-danger'>post vazio</p>");
         }
     }
 ?>

@@ -50,7 +50,7 @@
             FROM 
                 post AS p
             ORDER BY 
-                p.data ASC";
+                p.data DESC";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
 
