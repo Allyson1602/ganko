@@ -144,20 +144,20 @@
 <div class="postagens">
     <?php
         foreach($this->view->postagens AS $postagem){
-            $extensao = explode(".", $postagem['arquivo']);
+            $extensao = $postagem['tipo'];
 
             print("<div class='postagem'>");
             
-                if($extensao[1] == 'jpg' || $extensao[1] == 'jpeg' || $extensao[1] == 'gif' || $extensao[1] == 'apng' || $extensao[1] == 'svg'){
+                if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
                     print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
                 }
-                if($extensao[1] == 'mp4' || $extensao[1] == 'webm' || $extensao[1] == 'ogg' || $extensao[1] == 'svg'){
+                if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
                     print("
                         <video width='300' controls>
                             <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
                         </video>");
                 }
-                if($extensao[1] == 'mp3' || $extensao[1] == 'wave' || $extensao[1] == 'wav'){
+                if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
                     print("
                         <audio controls>
                             <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio

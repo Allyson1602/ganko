@@ -204,10 +204,16 @@
         }
         public function setPost(){
             $this->validar();
+
+            // if(($_POST['post_texto'] == '' && $_FILES['post_arquivo']['name'] != '') || ($_POST['post_texto'] != '' && $_FILES['post_arquivo']['name'] == '')){
+
+            // }else{
+            //     return header('location: /painel?msg=postVazio');
+            // }
             
             // FORMATO DE ARQUIVO
             $extensao = $_FILES['post_arquivo']['type'];
-            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != 'video/mp4'){
+            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != 'image/gif' && $extensao != 'video/mp4' && $extensao != 'video/webm' && $extensao != 'video/ogg' && $extensao != 'audio/mp3' && $extensao != 'audio/wave' && $extensao != 'audio/wav'){
                 return header('location: /painel?msg=formato_bloqueado');
             }
             // LIMITE DE TAMANHO DO ARQUIVO
@@ -229,10 +235,7 @@
             $post->__set('id_usuario', $_SESSION['id']);
             $post->__set('texto', $_POST['post_texto']);
             $post->__set('arquivo', $nome_arquivo);
-
-            // echo '<pre>';
-            // print_r($_FILES);
-            // echo '<pre>';
+            $post->__set('tipo', $extensao);
 
             $post->addPost();
 
