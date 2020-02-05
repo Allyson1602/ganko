@@ -93,7 +93,7 @@
         }
         public function editarDados(){
             $this->validar();
-            
+
             // VERIFICA SE PRIMARIA E SECUNDARIA SÃO IGUAIS
             if(in_array($_POST['primaria'], $_POST['secundaria'])){
                 return header('location: /alterar_dados?msg=kinesis_iguais');
@@ -260,6 +260,23 @@
             // print_r($post->getAll());
             // echo '<pre>';
         }
+        public function adicionarAmigos(){
+            $this->validar();
+
+            $usuario = Container::getModel('Usuario');
+
+            $this->procurarAmigo();
+
+            $this->view->usuario_add = $usuario->getUsuario();
+
+            $this->render('adicionar_amigos');
+        }
+        public function procurarAmigo(){
+            $usuario = Container::getModel('Usuario');
+            $usuario->__set('nick', $_POST['amigo']);
+            print_r($usuario->procurarAmigo());
+        }
+        
         
 
         // VALIDA USUARIO

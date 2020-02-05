@@ -118,6 +118,16 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'getPost'
 		);
+		$routes['adicionarAmigos'] = array(
+			'route' => '/adicionar_amigos',
+			'controller' => 'AppController',
+			'action' => 'adicionarAmigos'
+		);
+		$routes['procurarAmigo'] = array(
+			'route' => '/procurar_amigo',
+			'controller' => 'AppController',
+			'action' => 'procurarAmigo'
+		);
 		
 		$this->setRoutes($routes);
 	}

@@ -154,6 +154,21 @@
 
 			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		}
+		public function getUsuario(){
+			$query = "SELECT nick, foto FROM usuarios";
+			$stmt = $this->db->prepare($query);
+			$stmt->execute();
+
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		}
+		public function procurarAmigo(){
+			$query = "SELECT nick, foto FROM usuarios WHERE nick=:nick";
+			$stmt = $this->db->prepare($query);
+			$stmt->bindValue(':nick', $this->__get('nick'));
+			$stmt->execute();
+
+			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+		}
 
 
 		public function autenticar(){

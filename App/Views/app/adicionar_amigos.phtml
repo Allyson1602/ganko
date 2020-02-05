@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h5 class="bg-success">meus amigos: </h5>
+        </div>
+        <div class="col-6">
+            <h5 class="bg-info text-center">procurar: </h5>
+            <form method="POST" action="procurar_amigo">
+                <div class="box_nome">
+                    <input type="text" name="amigo" placeholder="nick" />
+                </div>
+                <div class="box_submit">
+                    <button type="submit">procurar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+            <h5 class="bg-danger">possíveis amigos: </h5>
+            <?php 
+                foreach($this->view->usuario_add AS $usuario){
+                    print("<p class='text-right'><a href='#'>
+                        ".$usuario['nick']."<img src='img/perfil/".$usuario['foto']."' width='100' height='100' />
+                    </a></p>");
+                }
+            ?>
+        </div>
+    </div>
+</div>
