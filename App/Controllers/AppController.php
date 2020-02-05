@@ -37,6 +37,11 @@
 
             $kinesis = Container::getModel('Kinesis');
 
+            // VERIFICA SE PRIMARIA E SECUNDARIA SÃO IGUAIS
+            if(in_array($_POST['primaria'], $_POST['secundaria'])){
+                return header('location: /painel?msg=kinesis_iguais');
+            }
+
             $kinesis->__set('id_usuario', $_SESSION['id']);
             $kinesis->__set('_secundaria', $_POST['secundaria']);
             $kinesis->__set('primaria', $_POST['primaria']);
@@ -88,6 +93,12 @@
         }
         public function editarDados(){
             $this->validar();
+            
+            // VERIFICA SE PRIMARIA E SECUNDARIA SÃO IGUAIS
+            if(in_array($_POST['primaria'], $_POST['secundaria'])){
+                return header('location: /alterar_dados?msg=kinesis_iguais');
+            }
+            
 			$usuario = Container::getModel('Usuario');
             $kinesis = Container::getModel('Kinesis');
 
@@ -100,16 +111,9 @@
             // adiciona novas kinesis
             $kinesis->addKinesis();
 
-            // VERIFICA SE PRIMARIA E SECUNDARIA SÃO IGUAIS
-            foreach($_POST['secundaria'] as $ki_secundaria){
-                if($_POST['primaria'] == $ki_secundaria){
-                    return header('location: /alterar_dados?msg=kinesis_iguais');
-                }
-            }
-            
             // FORMATO DE ARQUIVO
             $extensao = $_FILES['foto']['type'];
-            if($extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != ''){
+            if($extensao != 'image/webp' && $extensao != 'image/jpg' && $extensao != 'image/png' && $extensao != 'image/jpeg' && $extensao != ''){
                 return header('location: /alterar_dados?stt_upload=formato_bloqueado');
             }
             print $extensao;
