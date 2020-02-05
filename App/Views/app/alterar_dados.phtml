@@ -7,9 +7,16 @@
                     <input type="file" name="foto" />
                 </div>
                 <div class="box_nascimento">
+                    <?php
+                        $partes_data = explode('/', $this->view->usuario['nascimento']);
+
+                        $americano_data = new DateTime();
+                        $americano_data->setDate($partes_data[2], $partes_data[1], $partes_data[0])
+                    ?>
 					<label>data de nascimento:</label>
-					<input type="date" name="nascimento" value="<?= $this->view->usuario['nascimento']; ?>" />
+					<input type="date" name="nascimento" value="<?= $americano_data->format('Y-m-d'); ?>" />
 				</div>
+                <?php print($partes_data[2].'/'.$partes_data[1].'/'.$partes_data[0]); ?>
 				<div class="box_genero">
 					<fieldset><label>gênero:</label>
 						<label for="masculino">masculino</label>
@@ -23,8 +30,13 @@
 					</fieldset>
 				</div>
 				<div class="box_tempo">
+                    <?php
+                        $partes_data = explode('/', $this->view->usuario['comeco']);
+                        
+                        $americano_data->setDate($partes_data[2], $partes_data[1], $partes_data[0])
+                    ?>
 					<label>tempo de prática em kinesis:</label>
-					<input type="date" name="comeco" value="<?= $this->view->usuario['comeco']; ?>" />
+					<input type="date" name="comeco" value="<?= $americano_data->format('Y-m-d'); ?>" />
 				</div>
 				<div class="box_login">
 					<label>login:</label>
