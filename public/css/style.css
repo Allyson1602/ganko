@@ -1,6 +1,9 @@
 html, body, .container, .row{
 	height: 100%;
 }
+body{
+	background: url(../img/wallbambu.png), #D9FFDE;
+}
 
 /* ######## INDEX ######## */
 @media (min-width: 768px){
@@ -19,7 +22,7 @@ html, body, .container, .row{
 	
 		font-size: 18px;
 		border-radius: 15px;
-		border: 3px solid #009F05;
+		border: 2px solid #5cb85c;
 		text-align: center;
 		color: #444;
 	}
@@ -51,3 +54,21 @@ html, body, .container, .row{
 	}
 }
 /* ######## INDEX ######## */
+
+
+/* ######## inscrever ######## */
+@media (min-width: 768px){
+	.inscrever{
+		background: rgba(217, 255, 222, 0.7);
+	}
+	.inscrever label{
+		font-size: 18px;
+	}
+	.inscrever input{
+		border: 2px solid #5cb85c;
+	}
+	.inscrever a{
+		float: right;
+	}
+}
+/* ######## inscrever ######## */

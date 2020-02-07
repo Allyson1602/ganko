@@ -1,71 +1,70 @@
-VALIDAR EMAIL
-<div class="container-fluid">
+<h1 class="bg-danger text-white text-center">VALIDAR EMAIL</h1>
+<div class="container inscrever">
 	<div class="row">
 		<div class="col">
-			<form method="POST" action="/cadastrar" name="cadastro" onsubmit="return validaFormulario()">
-				<div class="box_nome">
-					<label>nome:</label>
-					<input type="text" name="nome" value="<?= $this->view->usuario['nome']; ?>" maxlength="10" />
+			<a href="/"class="btn btn-success">voltar</a>
+			<form method="POST" action="/cadastrar" name="cadastro" onsubmit="return validaFormulario()" class="form-group">
+				<div class="box_nome form-group">
+					<label>Nome:</label>
+					<input type="text" name="nome" value="<?= $this->view->usuario['nome']; ?>" class="form-control w-50" maxlength="15" />
 				</div>
-				<div class="box_sobrenome">
-					<label>sobrenome:</label>
-					<input type="text" name="sobrenome" value="<?= $this->view->usuario['sobrenome']; ?>" maxlength="10" />
+				<div class="box_sobrenome form-group">
+					<label>Sobrenome:</label>
+					<input type="text" name="sobrenome" value="<?= $this->view->usuario['sobrenome']; ?>" class="form-control w-50" maxlength="15" />
 				</div>
-				<div class="box_nascimento">
-					<label>data de nascimento:</label>
-					<input type="date" name="nascimento" value="<?= $this->view->usuario['nascimento']; ?>" />
+				<div class="box_nascimento form-group">
+					<label>Data de nascimento:</label>
+					<input type="date" name="nascimento" value="<?= $this->view->usuario['nascimento']; ?>" class="form-control w-25" />
 				</div>
-				<div class="box_tempo">
-					<label>tempo de prática em kinesis:</label>
-					<input type="date" name="comeco" value="<?= $this->view->usuario['comeco']; ?>" />
+				<div class="box_tempo form-group">
+					<label>Tempo de prática em kinesis:</label>
+					<input type="date" name="comeco" value="<?= $this->view->usuario['comeco']; ?>" class="form-control w-25" />
 				</div>
-				<div class="box_genero">
-					<fieldset><label>gênero:</label>
-						<label for="masculino">masculino</label>
-						<input type="radio" name="genero" value="masculino" id="masculino" <?php $this->view->usuario['genero']=='masculino'? print('checked'):''; ?> />
-
-						<label for="feminino">feminino</label>
-						<input type="radio" name="genero" value="feminino" id="feminino" <?php $this->view->usuario['genero']=='feminino'? print('checked'):''; ?> />
-
-						<label for="outro">outro</label>
-						<input type="radio" name="genero" value="outro" id="outro" <?php $this->view->usuario['genero']=='outro'? print('checked'):''; ?> />
-					</fieldset>
+				<div class="box_genero form-group">
+					<label>Gênero:</label>
+					<div class="form-check">
+						<input type="radio" name="genero" value="masculino" id="masculino" class="form-check-input" <?php $this->view->usuario['genero']=='masculino'? print('checked'):''; ?> />
+						<label for="masculino" class="form-check-label">masculino</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" name="genero" value="feminino" id="feminino" class="form-check-input" <?php $this->view->usuario['genero']=='feminino'? print('checked'):''; ?> />
+						<label for="feminino" class="form-check-label">feminino</label>
+					</div>
+					<div class="form-check">
+						<input type="radio" name="genero" value="outro" id="outro" class="form-check-input" <?php $this->view->usuario['genero']=='outro'? print('checked'):''; ?> />
+						<label for="outro" class="form-check-label">outro</label>
+					</div>
 				</div>
-				<div class="box_login">
-					<label>login:</label>
-					<input type="text" name="login" value="<?= $this->view->usuario['nick']; ?>" maxlength="10" />
+				<div class="box_login form-group">
+					<label>Login:</label>
+					<input type="text" name="login" value="<?= $this->view->usuario['nick']; ?>" maxlength="10" class="form-control w-50" />
 					<?php
 						if($this->view->loginExiste){
 							print("<small class='text text-danger'>login já existe</small>");
 						}
 					?>
 				</div>
-				<div class="box_email">
-					<label>email:</label>
-					<input type="text" name="email" value="<?= $this->view->usuario['email']; ?>" maxlength="40" />
+				<div class="box_email form-group">
+					<label>Email:</label>
+					<input type="text" name="email" value="<?= $this->view->usuario['email']; ?>" maxlength="40" class="form-control w-50" />
 					<?php 
 						if($this->view->emailExiste){
 							print("<small class='text text-danger'>email já cadastrado</small>");
 						}
 					?>
 				</div>
-				<div class="box_senha">
-					<label>senha:</label>
-					<input type="password" name="senha" maxlength="15" />
+				<div class="box_senha form-group">
+					<label>Senha:</label>
+					<input type="password" name="senha" maxlength="15" class="form-control w-50" />
 					<small>máximo 15 caracteres</small>
 				</div>
-				<div class="box_senha_conf">
-					<label>confirmação da senha:</label>
-					<input type="password" name="confirmacao" maxlength="15" />
+				<div class="box_senha_conf form-group">
+					<label>Confirmação da senha:</label>
+					<input type="password" name="confirmacao" maxlength="15" class="form-control w-50" />
 				</div>
 				<!-- <div></div> VALIDAÇÃO(NÃO SOU UM ROBÔ) -->
-				<div class="box_entrar">
-					<button type="submit">cadastrar</button>
-				</div>
+					<button type="submit" class="btn btn-success btn-lg px-4 py-1">cadastrar</button>
 			</form>
-		</div>
-		<div class="col banner">
-
 		</div>
 	</div>
 </div>
