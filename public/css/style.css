@@ -1,48 +1,53 @@
 html, body, .container, .row{
 	height: 100%;
 }
-body{
-	font-family: arial;
-}
-.box_senha{
-	padding-bottom: 10px;
-}
-.banner{
-	background: url('../img/wallpaper.jpeg');
-	background-size: cover;
-}
-.login label{
-	color: #00FF00;
-	font-size: 22px;
-}
-.login input{
-	padding: 3px;
 
-	font-size: 18px;
-	border-radius: 15px;
-	border: 1px solid #00FF00;
-	text-align: center;
-	color: #444;
+/* ######## INDEX ######## */
+@media (min-width: 768px){
+	.index .box_senha{
+		padding-bottom: 10px;
+	}
+	.index .banner{
+		background-image: linear-gradient(to right, transparent 0%, #D9FFDE 100%), url('../img/wallpaper.jpg');
+		background-size: cover;
+	}
+	.index .login label{
+		font-size: 30px;
+	}
+	.index .login input{
+		padding: 3px;
+	
+		font-size: 18px;
+		border-radius: 15px;
+		border: 3px solid #009F05;
+		text-align: center;
+		color: #444;
+	}
+	.index .login button{
+		border-radius: 15px;
+		font-family: arial;
+	}
+	.index .login{
+		background: #D9FFDE;
+	}
+	.index form{
+		/* border: 1px solid red; */
+	}
+	.index .msg{
+		/* border: 1px solid red; */
+	}
+	.index .box_entrada{
+		border-top: 1px solid gray;
+		font-family: arial;
+	}
+	.index .box_entrada a{
+		width: 49%;
+	
+		display: inline-block;
+	
+		text-align: center;
+		font-weight: bold;
+		font-size: 18px;
+	}
 }
-.login .recuperar{
-	color: #00bb00;
-	font-weight: bold;
-	margin-left: 70px;
-}
-.login button{
-	padding: 0px 20px 2px 20px;
-	margin-bottom: 15px;
-
-	background-color: #009900;
-	border: none;
-	font-size: 20px;
-	border-radius: 15px;
-	color: #FFFFFF;
-}
-.login .cadastrar{
-	margin-left: 5px;
-
-	color: #00bb00;
-	font-weight: bold;
-	/*border: 1px solid red;*/
-}
+/* ######## INDEX ######## */
