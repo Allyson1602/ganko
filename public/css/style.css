@@ -31,7 +31,7 @@ body{
 		font-family: arial;
 	}
 	.index .login{
-		background: #D9FFDE;
+		background-image: linear-gradient(to left, transparent 0%, #D9FFDE 100%);
 	}
 	.index form{
 		/* border: 1px solid red; */
@@ -58,17 +58,20 @@ body{
 
 /* ######## inscrever ######## */
 @media (min-width: 768px){
-	.inscrever{
-		background: rgba(217, 255, 222, 0.7);
+	.inscrever input:not(.genero){
+		width: 50%;
 	}
-	.inscrever label{
-		font-size: 18px;
+	.inscrever .data{
+		width: 172px !important;
 	}
-	.inscrever input{
-		border: 2px solid #5cb85c;
-	}
-	.inscrever a{
-		float: right;
-	}
+}
+.inscrever a{
+	float: right;
+}
+.inscrever label{
+	font-size: 18px;
+}
+.inscrever input{
+	border: 2px solid #5cb85c;
 }
 /* ######## inscrever ######## */
