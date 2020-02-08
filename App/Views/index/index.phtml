@@ -1,9 +1,9 @@
 <div class="container-fluid h-100 index">
-	<div class="row row-cols-2">
-		<div class="col-md-6 col-xs-12 banner"></div>
-		<div class="col-md login">
+	<div class="row">
+		<div class="banner"></div>
+		<div class="login">
 			<h1 class="display-4 text-center my-5 text-success msg">Bem-vindo(a) ao Ganko.</h1>
-			<form method="POST" action="/autenticar" class="form-group mx-auto w-50">
+			<form method="POST" action="/autenticar" class="form-group">
 				<div class="box_login form-group">
 					<label class="text-success">login:</label>
 					<input type="text" name="login" placeholder="login ou email" class="form-control" />
@@ -13,8 +13,8 @@
 					<input type="password" name="senha" placeholder="mínimo 6 caracteres" class="form-control" />
 				</div>
 					<button type="submit" class="btn btn-success btn-lg px-4 py-1">entrar</button>
-				<div class="box_entrada mt-4 pt-1">
-					<a href="/recuperar" class="text-success">recuperar conta</a>
+				<div class="box_entrada pt-1">
+					<a href="/recuperar" class="text-success">recuperar</a>
 					<a href="/inscrever" class="text-success">cadastrar</a>
 				</div>
 
