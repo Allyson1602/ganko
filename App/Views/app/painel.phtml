@@ -1,180 +1,188 @@
-<a href="/sair">sair</a><br/>
-<a href="/perfil">perfil</a><br/>
-<a href="/adicionar_amigos"> adicionar amgios</a>
+<div class="container-fluid painel">
+    <div class="row">
+        <div class="col">
+            <div class="nav">
+                <a href="/sair">sair</a><br/>
+                <a href="/perfil">perfil</a><br/>
+                <a href="/adicionar_amigos"> adicionar amgios</a>
+            </div>
 
-<?php
-    if(isset($_GET['msg'])){
-        if($_GET['msg'] == 'postado'){
-            echo "<p class='text-success'>postagem concluída</p>";
-        }
-        if($_GET['msg'] == 'adicionar_kinese'){
-            echo "<p class='text-danger'>antes de alterar os dados informe suas kinesis</p>";
-        }
-        if($_GET['msg'] == 'formato_bloqueado'){
-            print("<p class='text-danger'>formato de arquivo não suportado</p>");
-        }
-        if($_GET['msg'] == 'tamanho_exedido'){
-            print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
-        }
-        if($_GET['msg'] == 'postVazio'){
-            print("<p class='text-danger'>post vazio</p>");
-        }
-        if($_GET['msg'] == 'kinesis_iguais'){
-            print("<p class='text-danger'>kinese primária idêntica à secundária</p>");
-        }
-    }
-?>
+            <?php
+                if(isset($_GET['msg'])){
+                    if($_GET['msg'] == 'postado'){
+                        echo "<p class='text-success'>postagem concluída</p>";
+                    }
+                    if($_GET['msg'] == 'adicionar_kinese'){
+                        echo "<p class='text-danger'>antes de alterar os dados informe suas kinesis</p>";
+                    }
+                    if($_GET['msg'] == 'formato_bloqueado'){
+                        print("<p class='text-danger'>formato de arquivo não suportado</p>");
+                    }
+                    if($_GET['msg'] == 'tamanho_exedido'){
+                        print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
+                    }
+                    if($_GET['msg'] == 'postVazio'){
+                        print("<p class='text-danger'>post vazio</p>");
+                    }
+                    if($_GET['msg'] == 'kinesis_iguais'){
+                        print("<p class='text-danger'>kinese primária idêntica à secundária</p>");
+                    }
+                }
+            ?>
 
-<div class="formularios">
-    <?php
-        if(isset($this->view->validaFoto)){
-            if($this->view->validaFoto){
-    ?>
-                <form method="POST" action="/add_imagem" enctype="multipart/form-data">
-                    <div class="box_imagem">
-                        <label>foto de perfil:</label>
-                        <input type="file" name="foto" />
+            <div class="formularios">
+                <?php
+                    if(isset($this->view->validaFoto)){
+                        if($this->view->validaFoto){
+                ?>
+                            <form method="POST" action="/add_imagem" enctype="multipart/form-data">
+                                <div class="box_imagem">
+                                    <label>foto de perfil:</label>
+                                    <input type="file" name="foto" />
+                                </div>
+                                <div class="box_submit">
+                                    <input type="submit" value="upload" name="submit">
+                                </div>
+                                <div class="box_msg">
+                                    <?php
+                                        if(isset($_GET['stt_upload'])){
+                                            if($_GET['stt_upload'] == 'formato_bloqueado'){
+                                                print("<p class='text-danger'>formato de arquivo não suportado</p>");
+                                            }if($_GET['stt_upload'] == 'tamanho_exedido'){
+                                                print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
+                                            }
+                                        }
+                                    ?>
+                                </div>
+                            </form>
+                <?php
+                        }
+                    }
+                ?>
+
+
+                <?php
+                    if(isset($this->view->criarKinesis)){
+                        if($this->view->criarKinesis){ 
+                ?>
+                    
+                        <form method="POST" action="/addKinesis">
+                            <div class="box_primaria">
+                                <label>Primária:</label>
+                                <select name="primaria">
+                                    <option value="nenhum">nenhum</option>
+                                    <option value="Aerokinesis">Aerokinesis</option>
+                                    <option value="Biokinesis">Biokinesis</option>
+                                    <option value="Criokinesis">Criokinesis</option>
+                                    <option value="Chronokinesis">Chronokinesis</option>
+                                    <option value="Electrokinesis">Electrokinesis</option>
+                                    <option value="Geokinesis">Geokinesis</option>
+                                    <option value="Hidrokinesis">Hidrokinesis</option>
+                                    <option value="Luminokinese">Luminokinese</option>
+                                    <option value="Pyrokinese">Pyrokinese</option>
+                                    <option value="Psicokinese">Psicokinese</option>
+                                    <option value="Umbrakinesis">Umbrakinesis </option>
+                                    <option value="Atmokinese">Atmokinese</option>
+                                    <option value="Telecinese">Telecinese</option>
+                                </select>
+                            </div>
+                            <div class="box_secundaria">
+                                <label for="nenhum">Nenhum</label>
+                                <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum">
+                    
+                                <label for="Aerokinesis">Aerokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis">
+                    
+                                <label for="Biokinesis">Biokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis">
+                    
+                                <label for="Criokinesis">Criokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis">
+                    
+                                <label for="Chronokinesis">Chronokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis">
+                    
+                                <label for="Electrokinesis">Electrokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis">
+                    
+                                <label for="Geokinesis">Geokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis">
+                    
+                                <label for="Hidrokinesis">Hidrokinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis">
+                    
+                                <label for="Luminokinese">Luminokinese</label>
+                                <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese">
+                    
+                                <label for="Pyrokinese">Pyrokinese</label>
+                                <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese">
+                    
+                                <label for="Psicokinese">Psicokinese</label>
+                                <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese">
+                    
+                                <label for="Umbrakinesis">Umbrakinesis</label>
+                                <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis">
+                    
+                                <label for="Atmokinese">Atmokinese</label>
+                                <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese">
+                    
+                                <label for="Telecinese">Telecinese</label>
+                                <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese">
+                            </div>
+                            <div class="box_submit">
+                                <button type="submit">enviar</button>
+                            </div>
+                        </form>
+                <?php 
+                        }
+                    } 
+                ?>
+            </div>
+
+            <div class="post">
+                <form method="POST" action="/set_post" enctype="multipart/form-data">
+                    <div class="box_texto">
+                        <textarea name="post_texto"></textarea>
+                    </div>
+                    <div class="box_arquivo">
+                        <label for="post_arquivo">arquivo</label>
+                        <input type="file" name="post_arquivo" id="post_arquivo" style="display: none;" />
                     </div>
                     <div class="box_submit">
-                        <input type="submit" value="upload" name="submit">
-                    </div>
-                    <div class="box_msg">
-                        <?php
-                            if(isset($_GET['stt_upload'])){
-                                if($_GET['stt_upload'] == 'formato_bloqueado'){
-                                    print("<p class='text-danger'>formato de arquivo não suportado</p>");
-                                }if($_GET['stt_upload'] == 'tamanho_exedido'){
-                                    print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
-                                }
-                            }
-                        ?>
+                        <button type="submit">postar</button>
                     </div>
                 </form>
-    <?php
-            }
-        }
-    ?>
+            </div>
+            <div class="postagens">
+                <?php
+                    foreach($this->view->postagens AS $postagem){
+                        $extensao = $postagem['tipo'];
 
-
-    <?php
-        if(isset($this->view->criarKinesis)){
-            if($this->view->criarKinesis){ 
-    ?>
-        
-            <form method="POST" action="/addKinesis">
-                <div class="box_primaria">
-                    <label>Primária:</label>
-                    <select name="primaria">
-                        <option value="nenhum">nenhum</option>
-                        <option value="Aerokinesis">Aerokinesis</option>
-                        <option value="Biokinesis">Biokinesis</option>
-                        <option value="Criokinesis">Criokinesis</option>
-                        <option value="Chronokinesis">Chronokinesis</option>
-                        <option value="Electrokinesis">Electrokinesis</option>
-                        <option value="Geokinesis">Geokinesis</option>
-                        <option value="Hidrokinesis">Hidrokinesis</option>
-                        <option value="Luminokinese">Luminokinese</option>
-                        <option value="Pyrokinese">Pyrokinese</option>
-                        <option value="Psicokinese">Psicokinese</option>
-                        <option value="Umbrakinesis">Umbrakinesis </option>
-                        <option value="Atmokinese">Atmokinese</option>
-                        <option value="Telecinese">Telecinese</option>
-                    </select>
-                </div>
-                <div class="box_secundaria">
-                    <label for="nenhum">Nenhum</label>
-                    <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum">
-        
-                    <label for="Aerokinesis">Aerokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis">
-        
-                    <label for="Biokinesis">Biokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis">
-        
-                    <label for="Criokinesis">Criokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis">
-        
-                    <label for="Chronokinesis">Chronokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis">
-        
-                    <label for="Electrokinesis">Electrokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis">
-        
-                    <label for="Geokinesis">Geokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis">
-        
-                    <label for="Hidrokinesis">Hidrokinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis">
-        
-                    <label for="Luminokinese">Luminokinese</label>
-                    <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese">
-        
-                    <label for="Pyrokinese">Pyrokinese</label>
-                    <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese">
-        
-                    <label for="Psicokinese">Psicokinese</label>
-                    <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese">
-        
-                    <label for="Umbrakinesis">Umbrakinesis</label>
-                    <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis">
-        
-                    <label for="Atmokinese">Atmokinese</label>
-                    <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese">
-        
-                    <label for="Telecinese">Telecinese</label>
-                    <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese">
-                </div>
-                <div class="box_submit">
-                    <button type="submit">enviar</button>
-                </div>
-            </form>
-    <?php 
-            }
-        } 
-    ?>
-</div>
-
-<div class="post">
-    <form method="POST" action="/set_post" enctype="multipart/form-data">
-        <div class="box_texto">
-            <textarea name="post_texto"></textarea>
+                        print("<div class='postagem'>");
+                        
+                            if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
+                                print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
+                            }
+                            if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
+                                print("
+                                    <video width='300' controls>
+                                        <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
+                                    </video>");
+                            }
+                            if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
+                                print("
+                                    <audio controls>
+                                        <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio
+                                    </audio>
+                                ");
+                            }
+                            print("<p>".$postagem['texto']."</p>
+                            <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
+                            <p>".$postagem['nome_usuario']."</p>
+                        </div>");
+                    }
+                ?>
+            </div>
         </div>
-        <div class="box_arquivo">
-            <label for="post_arquivo">arquivo</label>
-            <input type="file" name="post_arquivo" id="post_arquivo" style="display: none;" />
-        </div>
-        <div class="box_submit">
-            <button type="submit">postar</button>
-        </div>
-    </form>
-</div>
-<div class="postagens">
-    <?php
-        foreach($this->view->postagens AS $postagem){
-            $extensao = $postagem['tipo'];
-
-            print("<div class='postagem'>");
-            
-                if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
-                    print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
-                }
-                if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
-                    print("
-                        <video width='300' controls>
-                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
-                        </video>");
-                }
-                if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
-                    print("
-                        <audio controls>
-                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio
-                        </audio>
-                    ");
-                }
-                print("<p>".$postagem['texto']."</p>
-                <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
-                <p>".$postagem['nome_usuario']."</p>
-            </div>");
-        }
-    ?>
+    </div>
 </div>
