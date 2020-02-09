@@ -1,9 +1,17 @@
-<form method="GET" action="/recuperacao">
-    <div class="box_email">
-        <label>email cadastrado:</label>
-        <input type="text" name="email" />
+
+<div class="container recuperar">
+    <div class="row">
+        <div class="col">
+            <form method="GET" action="/recuperacao" class="form-gruop">
+                <h3 class="text-info">Email cadastrado:</h3>
+                <div class="form-group box_email">
+                    <input type="text" name="email" class="form-control" />
+                </div>
+                <div class="form-group box_enviar">
+                    <button type="submit" class="btn btn-info">enviar email</button>
+                    <a href="/" class="btn btn-success ml-2">voltar</a>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="box_enviar">
-        <button type="submit">enviar email</button>
-    </div>
-</form>
+</div>

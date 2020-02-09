@@ -12,20 +12,21 @@
 					<label class="text-success">senha:</label>
 					<input type="password" name="senha" placeholder="mínimo 6 caracteres" class="form-control" />
 				</div>
-					<button type="submit" class="btn btn-success btn-lg px-4 py-1">entrar</button>
+				<div>
+					<?php
+						if(isset($_GET['log'])){
+							print("<span class='text-danger mr-2 mt-2'>login ou senha incorreto(s)</span>");
+						}
+						if(isset($_GET['acessong'])){
+							print("<span class='text-danger'>acesso negado</span>");
+						} 
+					?>
+				</div>
+				<button type="submit" class="btn btn-success btn-lg px-4 py-1">entrar</button>
 				<div class="box_entrada pt-1">
 					<a href="/recuperar" class="text-success">recuperar</a>
 					<a href="/inscrever" class="text-success">cadastrar</a>
 				</div>
-
-				<?php
-					if(isset($_GET['log'])){
-						print("<span class='text-danger'>login ou senha incorreto(s)</span>");
-					}
-					if(isset($_GET['acessong'])){
-						print("<span class='text-danger'>acesso negado</span>");
-					} 
-				?>
 			</form>
 	</div>
 </div>

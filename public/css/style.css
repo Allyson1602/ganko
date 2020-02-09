@@ -6,6 +6,13 @@ body{
 }
 
 /* ######## INDEX ######## */
+span{
+	display: block;
+
+	padding-bottom: 10px;
+
+	text-align: center;
+}
 @media (min-width: 768px){
 	.index .row{
 		display: flex;
@@ -115,7 +122,7 @@ body{
 		display: flex;
 			justify-content: space-around;
 
-		height: 100px;
+		height: 50px;
 
 		margin-top: 10px;
 		border-top: 1px solid gray;
@@ -157,3 +164,41 @@ body{
 	border: 2px solid #5cb85c;
 }
 /* ######## inscrever ######## */
+
+
+/* ######## recuperar ######## */
+.recuperar{
+	margin-top: 10%;
+}
+.recuperar form{
+	padding: 25px;
+
+	background: #fff;
+	border: 1px solid #6bc0de;
+}
+.recuperar input{
+	border: none;
+	border-bottom: 2px solid #5bc0de;
+	background: transparent;
+}
+/* ######## recuperar ######## */
+
+/* ######## msg_recuperar ######## */
+.msg_recuperar{
+	height: 200px;
+
+	margin-top: 10%;
+	padding: 25px;
+
+	background: #fff;
+	border: 1px solid #6bc0de;
+}
+.msg_recuperar h3{
+	text-align: center;
+}
+.msg_recuperar a{
+	display: block;
+
+	margin-top: 40px;
+}
+/* ######## msg_recuperar ######## */
