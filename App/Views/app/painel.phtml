@@ -1,11 +1,14 @@
 <div class="container-fluid painel">
     <div class="row">
         <div class="col">
-            <div class="nav">
-                <a href="/sair">sair</a><br/>
-                <a href="/perfil">perfil</a><br/>
-                <a href="/adicionar_amigos"> adicionar amgios</a>
-            </div>
+            <header class="bg-success">
+                <nav>
+                    <a href="/sair" class="text-light" style="width:10%" title="sair"><i class="fas fa-power-off"></i></a><br/>
+                    <span style="width:80%"><img src="img/sistema/logo_ganko.png" alt="logo ganko" class="img-fluid logo" /></span>
+                    <a href="/perfil" class="text-light" style="width:5%" title="perfil"><i class="fas fa-user-circle"></i></a><br/>
+                    <a href="/adicionar_amigos" class="text-light" style="width:5%; margin-right:10px" title="amigos"><i class="fas fa-user-friends"></i></a>
+                </nav>
+            </header>
 
             <?php
                 if(isset($_GET['msg'])){
@@ -139,49 +142,51 @@
                 ?>
             </div>
 
-            <div class="post">
-                <form method="POST" action="/set_post" enctype="multipart/form-data">
-                    <div class="box_texto">
-                        <textarea name="post_texto"></textarea>
-                    </div>
-                    <div class="box_arquivo">
-                        <label for="post_arquivo">arquivo</label>
-                        <input type="file" name="post_arquivo" id="post_arquivo" style="display: none;" />
-                    </div>
-                    <div class="box_submit">
-                        <button type="submit">postar</button>
-                    </div>
-                </form>
-            </div>
-            <div class="postagens">
-                <?php
-                    foreach($this->view->postagens AS $postagem){
-                        $extensao = $postagem['tipo'];
+            <div class="conteudo">
+                <div class="post">
+                    <form method="POST" action="/set_post" enctype="multipart/form-data">
+                        <div class="box_texto">
+                            <textarea name="post_texto"></textarea>
+                        </div>
+                        <div class="box_arquivo">
+                            <label for="post_arquivo">arquivo</label>
+                            <input type="file" name="post_arquivo" id="post_arquivo" style="display: none;" />
+                        </div>
+                        <div class="box_submit">
+                            <button type="submit">postar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="postagens">
+                    <?php
+                        foreach($this->view->postagens AS $postagem){
+                            $extensao = $postagem['tipo'];
 
-                        print("<div class='postagem'>");
-                        
-                            if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
-                                print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
-                            }
-                            if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
-                                print("
-                                    <video width='300' controls>
-                                        <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
-                                    </video>");
-                            }
-                            if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
-                                print("
-                                    <audio controls>
-                                        <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio
-                                    </audio>
-                                ");
-                            }
-                            print("<p>".$postagem['texto']."</p>
-                            <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
-                            <p>".$postagem['nome_usuario']."</p>
-                        </div>");
-                    }
-                ?>
+                            print("<div class='postagem'>");
+                            
+                                if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
+                                    print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
+                                }
+                                if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
+                                    print("
+                                        <video width='300' controls>
+                                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
+                                        </video>");
+                                }
+                                if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
+                                    print("
+                                        <audio controls>
+                                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio
+                                        </audio>
+                                    ");
+                                }
+                                print("<p>".$postagem['texto']."</p>
+                                <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
+                                <p>".$postagem['nome_usuario']."</p>
+                            </div>");
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     </div>

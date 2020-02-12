@@ -204,5 +204,65 @@ span{
 /* ######## msg_recuperar ######## */
 
 /* ######## painel ######## */
+@media (min-width: 768px){
+	.painel .col{
+		padding: 0;
+	}
+	.painel header{
+		width: 100%;
+		height: 82px;
 
+		position: fixed;
+		top: 0;
+
+		overflow: hidden;
+		text-align: center;
+	}
+	.painel nav{
+		height: 82px;
+
+		display: flex;
+			align-items: center;
+	}
+	.painel span{
+		height: 82px;
+	}
+	.painel nav a{
+		height: 33px;
+
+		font-size: 28px;
+	}
+	.painel nav .logo{
+		width: 200px;
+	}
+	.painel .conteudo{
+		margin-top: 82px; /* espaço por causa do navbar fixed */
+	}
+	.painel .conteudo .post{
+		margin-top: 15px;
+		padding: 20px;
+
+		background-color: #D9FFDE;
+		border: 1px solid red;
+	}
+	.painel .conteudo .post div{
+		/* border: 1px solid red; */
+		text-align: center;
+	}
+	.painel .conteudo .post textarea{
+		width: 700px;
+		height: 150px;
+
+		padding: 15px;
+		
+		max-width: 700px;
+		max-height: 150px;
+		min-width: 700px;
+		min-height: 150px;
+
+		resize: none;
+		border: 1px solid green;
+		border-radius: 15px;
+	}
+}
 /* ######## painel ######## */
