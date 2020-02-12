@@ -149,7 +149,11 @@
                             <textarea name="post_texto"></textarea>
                         </div>
                         <div class="box_arquivo">
-                            <label for="post_arquivo">arquivo</label>
+                            <label for="post_arquivo" class="icones_arquivo">
+                                <i class="fas fa-images"></i>
+                                <i class="fas fa-video"></i>
+                                <i class="fas fa-volume-up"></i>
+                            </label>
                             <input type="file" name="post_arquivo" id="post_arquivo" style="display: none;" />
                         </div>
                         <div class="box_submit">
@@ -165,23 +169,23 @@
                             print("<div class='postagem'>");
                             
                                 if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
-                                    print("<img src='post/".$postagem['arquivo']."' class='postagem' style='width:300;' />");
+                                    print("<img src='post/".$postagem['arquivo']."' class='arquivo_postagem' style='width:300;' />");
                                 }
                                 if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
                                     print("
                                         <video width='300' controls>
-                                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navegador não suporta o tipo do vídeo
+                                            <source src='post/".$postagem['arquivo']."' class='arquivo_postagem' />Seu navegador não suporta o tipo do vídeo
                                         </video>");
                                 }
                                 if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
                                     print("
                                         <audio controls>
-                                            <source src='post/".$postagem['arquivo']."' class='postagem' />Seu navedador não suporta o tipo do audio
+                                            <source src='post/".$postagem['arquivo']."' class='arquivo_postagem' />Seu navedador não suporta o tipo do audio
                                         </audio>
                                     ");
                                 }
-                                print("<p>".$postagem['texto']."</p>
-                                <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' style='width:100;' />
+                                print("<p class='texto_postagem'>".$postagem['texto']."</p>
+                                <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' />
                                 <p>".$postagem['nome_usuario']."</p>
                             </div>");
                         }

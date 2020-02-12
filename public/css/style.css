@@ -241,12 +241,8 @@ span{
 	.painel .conteudo .post{
 		margin-top: 15px;
 		padding: 20px;
-
-		background-color: #D9FFDE;
-		border: 1px solid red;
 	}
 	.painel .conteudo .post div{
-		/* border: 1px solid red; */
 		text-align: center;
 	}
 	.painel .conteudo .post textarea{
@@ -261,8 +257,66 @@ span{
 		min-height: 150px;
 
 		resize: none;
+		border: 1px solid #5cb85c;
+		border-radius: 15px 15px 0 0;
+	}
+	.painel .conteudo .post .box_arquivo{
+		width: 700px;
+
+		margin: 0 auto;
+
+		border-radius: 0 0 15px 15px;
+		background-color: #5cb85c;
+		border-bottom: 1px solid green;
+	}
+	.painel .conteudo .post .box_arquivo .icones_arquivo{
+		width: 100%;
+
+		margin: 0;
+
+		border-radius: 0 0 15px 15px;
+		color: #fff;
+		font-size: 20px;
+		cursor: pointer;
+	}
+	.painel .conteudo .post .box_arquivo .icones_arquivo:hover{
+		background-color: rgb(70, 131, 70);
+	}
+	.painel .conteudo .post .box_arquivo .icones_arquivo i{
+		margin: 0 10px;
+	}
+	.painel .conteudo .post .box_submit button{
+		padding: 0px 80px;
+		padding-bottom: 3px;
+
+		background-color: #5cb85c;
+		border-radius: 0 0 20px 20px;
 		border: 1px solid green;
-		border-radius: 15px;
+		border-top: none;
+		color: #FFF;
+		font-size: 18px;
+	}
+	.painel .conteudo .post .box_submit button:hover{
+		background-color: rgb(70, 131, 70);
+	}
+	.painel .conteudo .postagens{
+		border: 1px solid red;
+	}
+	.painel .conteudo .postagem{
+		width: 700px;
+
+		margin: 0 auto;
+
+		border: 1px solid red;
+		background-color: #D9FFDE;
+	}
+	.painel .conteudo .postagens .imagem_usuario_publicacao{
+		width: 100px;
+	}
+	.painel .conteudo .postagens .texto_postagem{
+		text-align: center;
+		font-size: 18px;
+		border: 1px solid red;
 	}
 }
 /* ######## painel ######## */
