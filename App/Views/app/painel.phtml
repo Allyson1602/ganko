@@ -6,7 +6,7 @@
                     <a href="/sair" class="text-light" style="width:10%" title="sair"><i class="fas fa-power-off"></i></a><br/>
                     <span style="width:80%"><img src="img/sistema/logo_ganko.png" alt="logo ganko" class="img-fluid logo" /></span>
                     <a href="/perfil" class="text-light" style="width:5%" title="perfil"><i class="fas fa-user-circle"></i></a><br/>
-                    <a href="/adicionar_amigos" class="text-light" style="width:5%; margin-right:10px" title="amigos"><i class="fas fa-user-friends"></i></a>
+                    <a href="/adicionar_amigos" class="text-light ml-3" style="width:5%" title="amigos"><i class="fas fa-user-friends"></i></a>
                 </nav>
             </header>
 
@@ -185,8 +185,10 @@
                                     ");
                                 }
                                 print("<p class='texto_postagem'>".$postagem['texto']."</p>
-                                <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' />
-                                <p>".$postagem['nome_usuario']."</p>
+                                <a href='/perfil' class='link_usuario'>
+                                    <img src='img/perfil/".$postagem['foto_usuario']."' class='imagem_usuario_publicacao' />
+                                    <p class='nome_usuario'>".$postagem['nome_usuario']."</p>
+                                </a>
                             </div>");
                         }
                     ?>

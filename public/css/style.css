@@ -215,6 +215,7 @@ span{
 		position: fixed;
 		top: 0;
 
+		z-index: 1;
 		overflow: hidden;
 		text-align: center;
 	}
@@ -300,23 +301,60 @@ span{
 		background-color: rgb(70, 131, 70);
 	}
 	.painel .conteudo .postagens{
-		border: 1px solid red;
+		/* border: 1px solid red; */
 	}
 	.painel .conteudo .postagem{
 		width: 700px;
 
 		margin: 0 auto;
+		margin-bottom: 30px;
+		padding: 15px;
 
-		border: 1px solid red;
+		position: relative;
+
+		border-top: 1px solid green;
+		border-bottom: 4px solid green;
+		border-radius: 15px;
 		background-color: #D9FFDE;
 	}
-	.painel .conteudo .postagens .imagem_usuario_publicacao{
-		width: 100px;
-	}
 	.painel .conteudo .postagens .texto_postagem{
+		margin: 0;
+		padding: 10px;
+
 		text-align: center;
 		font-size: 18px;
-		border: 1px solid red;
+	}
+	.painel .conteudo .postagens .link_usuario{
+		padding: 7px;
+
+		background-color: #5cb85c;
+		border-radius: 10px;
+	}
+	.painel .conteudo .postagens .link_usuario:hover{
+		text-decoration: none;
+		background-color: green;
+	}
+	.painel .conteudo .postagens .imagem_usuario_publicacao{
+		width: 50px;
+		height: 50px;
+
+		border-radius: 50px;
+		border: 3px solid #5cb85c;
+	}
+	.painel .conteudo .postagens .link_usuario:hover .imagem_usuario_publicacao{
+		border: 3px solid green;
+	}
+	.painel .conteudo .postagens .nome_usuario{
+		display: inline;
+
+		font-size: 18px;
+
+		text-decoration: none;
+		color: #fff;
+		/* border: 1px solid red; */
+	}
+	.painel .conteudo .postagens .arquivo_postagem{
+		margin-left: 200px;
 	}
 }
 /* ######## painel ######## */
