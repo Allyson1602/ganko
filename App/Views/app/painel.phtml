@@ -4,7 +4,7 @@
             <header class="bg-success">
                 <nav>
                     <a href="/sair" class="text-light" style="width:10%" title="sair"><i class="fas fa-power-off"></i></a><br/>
-                    <span style="width:80%"><img src="img/sistema/logo_ganko.png" alt="logo ganko" class="img-fluid logo" /></span>
+                    <span><img src="img/sistema/logo_ganko.png" alt="logo ganko" class="img-fluid logo" /></span>
                     <a href="/perfil" class="text-light" style="width:5%" title="perfil"><i class="fas fa-user-circle"></i></a><br/>
                     <a href="/adicionar_amigos" class="text-light ml-3" style="width:5%" title="amigos"><i class="fas fa-user-friends"></i></a>
                 </nav>
@@ -169,17 +169,17 @@
                             print("<div class='postagem'>");
                             
                                 if($extensao == 'image/jpg' || $extensao == 'image/jpeg' || $extensao == 'image/gif' || $extensao == 'image/png'){
-                                    print("<img src='post/".$postagem['arquivo']."' class='arquivo_postagem' style='width:300;' />");
+                                    print("<img src='post/".$postagem['arquivo']."' class='arquivo_postagem' />");
                                 }
                                 if($extensao == 'video/mp4' || $extensao == 'video/webm' || $extensao == 'video/svg'){
                                     print("
-                                        <video width='300' controls>
-                                            <source src='post/".$postagem['arquivo']."' class='arquivo_postagem' />Seu navegador não suporta o tipo do vídeo
+                                        <video class='arquivo_postagem' controls>
+                                            <source src='post/".$postagem['arquivo']."' />Seu navegador não suporta o tipo do vídeo
                                         </video>");
                                 }
                                 if($extensao == 'audio/mp3' || $extensao == 'audio/wave' || $extensao == 'audio/wav'){
                                     print("
-                                        <audio controls>
+                                        <audio class='arquivo_postagem' controls>
                                             <source src='post/".$postagem['arquivo']."' class='arquivo_postagem' />Seu navedador não suporta o tipo do audio
                                         </audio>
                                     ");

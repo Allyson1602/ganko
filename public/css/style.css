@@ -204,33 +204,129 @@ span{
 /* ######## msg_recuperar ######## */
 
 /* ######## painel ######## */
+.painel .col{
+	padding: 0;
+}
+.painel header{
+	width: 100%;
+
+	position: fixed;
+	top: 0;
+
+	z-index: 1;
+	overflow: hidden;
+	text-align: center;
+}
+.painel nav{
+	display: flex;
+		align-items: center;
+}
+.painel .conteudo .post{
+	margin-top: 15px;
+	padding: 20px;
+}
+.painel .conteudo .post div{
+	text-align: center;
+}
+.painel .conteudo .post textarea{
+	padding: 15px;
+
+	resize: none;
+	border: 1px solid #5cb85c;
+	border-radius: 15px 15px 0 0;
+}
+.painel .conteudo .post .box_arquivo{
+	margin: 0 auto;
+
+	border-radius: 0 0 15px 15px;
+	background-color: #5cb85c;
+	border-bottom: 1px solid green;
+}
+.painel .conteudo .post .box_arquivo .icones_arquivo{
+	width: 100%;
+
+	margin: 0;
+
+	border-radius: 0 0 15px 15px;
+	color: #fff;
+	cursor: pointer;
+}
+.painel .conteudo .post .box_arquivo .icones_arquivo:hover{
+	background-color: rgb(70, 131, 70);
+}
+.painel .conteudo .post .box_arquivo .icones_arquivo i{
+	margin: 0 10px;
+}
+.painel .conteudo .post .box_submit button{
+	background-color: #5cb85c;
+	border-radius: 0 0 20px 20px;
+	border: 1px solid green;
+	border-top: none;
+	color: #FFF;
+}
+.painel .conteudo .post .box_submit button:hover{
+	background-color: rgb(70, 131, 70);
+}
+.painel .conteudo .postagem{
+	margin: 0 auto;
+	margin-bottom: 30px;
+	padding: 15px;
+
+	position: relative;
+
+	border-top: 1px solid green;
+	border-bottom: 4px solid green;
+	border-radius: 15px;
+	background-color: #D9FFDE;
+}
+.painel .conteudo .postagens .texto_postagem{
+	margin: 0;
+	padding: 10px;
+
+	text-align: center;
+	font-size: 18px;
+}
+.painel .conteudo .postagens .link_usuario{
+	padding: 7px;
+
+	background-color: #5cb85c;
+	border-radius: 10px;
+}
+.painel .conteudo .postagens .link_usuario:hover{
+	text-decoration: none;
+	background-color: green;
+}
+.painel .conteudo .postagens .imagem_usuario_publicacao{
+	width: 50px;
+	height: 50px;
+
+	border-radius: 50px;
+	border: 3px solid #5cb85c;
+}
+.painel .conteudo .postagens .link_usuario:hover .imagem_usuario_publicacao{
+	border: 3px solid green;
+}
+.painel .conteudo .postagens .nome_usuario{
+	display: inline;
+
+	font-size: 18px;
+
+	text-decoration: none;
+	color: #fff;
+}
+.painel .conteudo .postagens .arquivo_postagem{
+	display: block;
+
+	margin: 0 auto;
+}
 @media (min-width: 768px){
-	.painel .col{
-		padding: 0;
-	}
 	.painel header{
-		width: 100%;
 		height: 82px;
-
-		position: fixed;
-		top: 0;
-
-		z-index: 1;
-		overflow: hidden;
-		text-align: center;
-	}
-	.painel nav{
-		height: 82px;
-
-		display: flex;
-			align-items: center;
-	}
+	}	
 	.painel span{
-		height: 82px;
+		width: 80%;
 	}
 	.painel nav a{
-		height: 33px;
-
 		font-size: 28px;
 	}
 	.painel nav .logo{
@@ -239,122 +335,61 @@ span{
 	.painel .conteudo{
 		margin-top: 82px; /* espaço por causa do navbar fixed */
 	}
-	.painel .conteudo .post{
-		margin-top: 15px;
-		padding: 20px;
-	}
-	.painel .conteudo .post div{
-		text-align: center;
-	}
 	.painel .conteudo .post textarea{
 		width: 700px;
 		height: 150px;
-
-		padding: 15px;
-		
-		max-width: 700px;
-		max-height: 150px;
-		min-width: 700px;
-		min-height: 150px;
-
-		resize: none;
-		border: 1px solid #5cb85c;
-		border-radius: 15px 15px 0 0;
 	}
 	.painel .conteudo .post .box_arquivo{
 		width: 700px;
-
-		margin: 0 auto;
-
-		border-radius: 0 0 15px 15px;
-		background-color: #5cb85c;
-		border-bottom: 1px solid green;
 	}
 	.painel .conteudo .post .box_arquivo .icones_arquivo{
-		width: 100%;
-
-		margin: 0;
-
-		border-radius: 0 0 15px 15px;
-		color: #fff;
 		font-size: 20px;
-		cursor: pointer;
-	}
-	.painel .conteudo .post .box_arquivo .icones_arquivo:hover{
-		background-color: rgb(70, 131, 70);
-	}
-	.painel .conteudo .post .box_arquivo .icones_arquivo i{
-		margin: 0 10px;
 	}
 	.painel .conteudo .post .box_submit button{
 		padding: 0px 80px;
 		padding-bottom: 3px;
 
-		background-color: #5cb85c;
-		border-radius: 0 0 20px 20px;
-		border: 1px solid green;
-		border-top: none;
-		color: #FFF;
 		font-size: 18px;
-	}
-	.painel .conteudo .post .box_submit button:hover{
-		background-color: rgb(70, 131, 70);
-	}
-	.painel .conteudo .postagens{
-		/* border: 1px solid red; */
 	}
 	.painel .conteudo .postagem{
 		width: 700px;
-
-		margin: 0 auto;
-		margin-bottom: 30px;
-		padding: 15px;
-
-		position: relative;
-
-		border-top: 1px solid green;
-		border-bottom: 4px solid green;
-		border-radius: 15px;
-		background-color: #D9FFDE;
-	}
-	.painel .conteudo .postagens .texto_postagem{
-		margin: 0;
-		padding: 10px;
-
-		text-align: center;
-		font-size: 18px;
-	}
-	.painel .conteudo .postagens .link_usuario{
-		padding: 7px;
-
-		background-color: #5cb85c;
-		border-radius: 10px;
-	}
-	.painel .conteudo .postagens .link_usuario:hover{
-		text-decoration: none;
-		background-color: green;
-	}
-	.painel .conteudo .postagens .imagem_usuario_publicacao{
-		width: 50px;
-		height: 50px;
-
-		border-radius: 50px;
-		border: 3px solid #5cb85c;
-	}
-	.painel .conteudo .postagens .link_usuario:hover .imagem_usuario_publicacao{
-		border: 3px solid green;
-	}
-	.painel .conteudo .postagens .nome_usuario{
-		display: inline;
-
-		font-size: 18px;
-
-		text-decoration: none;
-		color: #fff;
-		/* border: 1px solid red; */
 	}
 	.painel .conteudo .postagens .arquivo_postagem{
-		margin-left: 200px;
+		width: 300px;
+	}
+}
+@media (max-width: 768px){
+	.painel header{
+		height: 42px;
+	}	
+	.painel span{
+		width: 75%;
+	}
+	.painel nav a{
+		font-size: 20px;
+	}
+	.painel nav .logo{
+		width: 100px;
+	}
+	.painel .conteudo{
+		margin-top: 42px; /* espaço por causa do navbar fixed */
+	}
+	.painel .conteudo .post textarea{
+		width: 100%;
+		height: 100px;
+	}
+	.painel .conteudo .post .box_arquivo{
+		width: 100%;
+	}
+	.painel .conteudo .post .box_arquivo .icones_arquivo{
+		font-size: 15px;
+	}
+	.painel .conteudo .post .box_submit button{
+		padding: 0px 50px;
+		padding-bottom: 3px;
+	}
+	.painel .conteudo .postagens .arquivo_postagem{
+		width: 100%;
 	}
 }
 /* ######## painel ######## */
