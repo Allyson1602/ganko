@@ -319,6 +319,50 @@ span{
 
 	margin: 0 auto;
 }
+.painel .content-modal{
+	/* width: 250px;
+	height: 50px; */
+
+	display: block;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	position: fixed;
+		top: 85px;
+		left: 0;
+		right: 0;
+
+	background-color: #9400D3;
+	border-radius: 20px;
+	z-index: 2;
+	text-align: center;
+	box-shadow: 0px 0px 10px #3b3b3b;
+}
+.painel .content-modal .msg{
+	margin-top: 10px;
+	color: #fff;
+	font-weight: bold;
+}
+.painel .content-modal .close{
+	width: 20px;
+
+	position: relative;
+		right: 10px;
+
+	color: #aaa;
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+	/* border: 1px solid red; */
+}
+
+.painel .content-modal .close:hover,
+.painel .content-modal .close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
 @media (min-width: 768px){
 	.painel header{
 		height: 82px;
@@ -393,3 +437,16 @@ span{
 	}
 }
 /* ######## painel ######## */
+
+
+/* ######## perfil ######## */
+
+
+@media (min-width: 768px){
+
+}
+
+@media (max-width: 768px){
+
+}
+/* ######## perfil ######## */

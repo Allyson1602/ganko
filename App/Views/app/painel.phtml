@@ -12,33 +12,36 @@
 
             <?php
                 if(isset($_GET['msg'])){
-                    if($_GET['msg'] == 'postado'){
-                        echo "<p class='text-success'>postagem concluída</p>";
-                    }
-                    if($_GET['msg'] == 'adicionar_kinese'){
-                        echo "<p class='text-danger'>antes de alterar os dados informe suas kinesis</p>";
-                    }
-                    if($_GET['msg'] == 'formato_bloqueado'){
-                        print("<p class='text-danger'>formato de arquivo não suportado</p>");
-                    }
-                    if($_GET['msg'] == 'tamanho_exedido'){
-                        print("<p class='text-danger'>tamanho de arquivo exedido(5mb)</p>");
-                    }
-                    if($_GET['msg'] == 'postVazio'){
-                        print("<p class='text-danger'>post vazio</p>");
-                    }
-                    if($_GET['msg'] == 'kinesis_iguais'){
-                        print("<p class='text-danger'>kinese primária idêntica à secundária</p>");
-                    }
+                    print("<div id='content-modal' class='w-50 content-modal'>");
+                        print("<button id='close' class='close' onclick='return fechar()' >&times;</button>");
+                        if($_GET['msg'] == 'postado'){
+                            echo "<p class='msg'>Postagem concluída.</p>";
+                        }
+                        if($_GET['msg'] == 'adicionar_kinese'){
+                            echo "<p class='msg'>Antes de alterar seus dados informe suas kinesis.</p>";
+                        }
+                        if($_GET['msg'] == 'formato_bloqueado'){
+                            print("<p class='msg'>Formato de arquivo não suportado.</p>");
+                        }
+                        if($_GET['msg'] == 'tamanho_exedido'){
+                            print("<p class='msg'>Tamanho de arquivo exedido (5mb).</p>");
+                        }
+                        if($_GET['msg'] == 'postVazio'){
+                            print("<p class='msg'>Post vazio.</p>");
+                        }
+                        if($_GET['msg'] == 'kinesis_iguais'){
+                            print("<p class='msg'>Kinese primária idêntica à secundária.</p>");
+                        }
+                    print("</div>");
                 }
             ?>
 
             <div class="formularios">
                 <?php
-                    if(isset($this->view->validaFoto)){
-                        if($this->view->validaFoto){
+                    // if(isset($this->view->validaFoto)){
+                    //     if($this->view->validaFoto){
                 ?>
-                            <form method="POST" action="/add_imagem" enctype="multipart/form-data">
+                            <form method="POST" class="add_imagem" action="/add_imagem" enctype="multipart/form-data">
                                 <div class="box_imagem">
                                     <label>foto de perfil:</label>
                                     <input type="file" name="foto" />
@@ -59,8 +62,8 @@
                                 </div>
                             </form>
                 <?php
-                        }
-                    }
+                    //     }
+                    // }
                 ?>
 
 
