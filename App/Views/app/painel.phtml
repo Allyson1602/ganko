@@ -38,16 +38,16 @@
 
             <div class="formularios">
                 <?php
-                    // if(isset($this->view->validaFoto)){
-                    //     if($this->view->validaFoto){
+                    if(isset($this->view->validaFoto)){
+                        if($this->view->validaFoto){
                 ?>
                             <form method="POST" class="add_imagem" action="/add_imagem" enctype="multipart/form-data">
+                                <h1 class="display-4">Adicione uma imagem de perfil:</h1>
                                 <div class="box_imagem">
-                                    <label>foto de perfil:</label>
-                                    <input type="file" name="foto" />
-                                </div>
-                                <div class="box_submit">
-                                    <input type="submit" value="upload" name="submit">
+                                    <label class="label_foto"  for="foto"><i class="fas fa-street-view icone_foto"></i></label>
+                                    <input type="file" id="foto" name="foto" />
+
+                                    <input type="submit" class="btn btn-outline-light" value="upload" name="submit">
                                 </div>
                                 <div class="box_msg">
                                     <?php
@@ -62,8 +62,8 @@
                                 </div>
                             </form>
                 <?php
-                    //     }
-                    // }
+                        }
+                    }
                 ?>
 
 

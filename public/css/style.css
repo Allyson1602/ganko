@@ -319,6 +319,7 @@ span{
 
 	margin: 0 auto;
 }
+/*  */
 .painel .content-modal{
 	/* width: 250px;
 	height: 50px; */
@@ -335,7 +336,7 @@ span{
 
 	background-color: #9400D3;
 	border-radius: 20px;
-	z-index: 2;
+	z-index: 3;
 	text-align: center;
 	box-shadow: 0px 0px 10px #3b3b3b;
 }
@@ -354,15 +355,52 @@ span{
 	font-size: 28px;
 	font-weight: bold;
 	cursor: pointer;
-	/* border: 1px solid red; */
 }
+/*  */
+.painel form h1{
+	text-align: center;
+	border-top: 2px solid #fff;
+}
+.painel .add_imagem{
+	width: 100%;
 
+	position: fixed;
+
+	background-color: #9400D3;
+	color: #FFF;
+}
+.painel .add_imagem .box_imagem{
+	margin: 0 auto;
+
+	display: flex;
+	justify-content: space-around;
+}
+.painel .add_imagem #foto{
+	display: none;
+}
+.painel .add_imagem .label_foto{
+	display: block;
+
+	border: 1px solid #fff;
+	cursor: pointer;
+}
+.painel .add_imagem .label_foto:hover{
+	border: 1px solid gray;
+}
+.painel .add_imagem .btn{
+	margin: auto 0;
+}
+.painel .add_imagem .btn:hover{
+	color: #9400D3;
+}
+/*  */
 .painel .content-modal .close:hover,
 .painel .content-modal .close:focus {
   color: white;
   text-decoration: none;
   cursor: pointer;
 }
+
 @media (min-width: 768px){
 	.painel header{
 		height: 82px;
@@ -401,6 +439,33 @@ span{
 	.painel .conteudo .postagens .arquivo_postagem{
 		width: 300px;
 	}
+
+	.painel form h1{
+		font-size: 35px !important;
+	}
+	.painel .add_imagem{
+		/* height: 200px; */
+		
+		top: 82px;
+	
+		z-index: 2;
+	}
+	.painel .add_imagem .box_imagem{
+		width: 300px;
+	}
+	.painel .add_imagem .label_foto{
+		width: 120px;
+		height: 120px;
+	
+		margin-top: 15px;
+		padding: 8px;
+	}
+	.painel .add_imagem .icone_foto{
+		font-size: 100px;
+	}
+	.painel .add_imagem .btn{
+		height: 50px;
+	}
 }
 @media (max-width: 768px){
 	.painel header{
@@ -434,6 +499,30 @@ span{
 	}
 	.painel .conteudo .postagens .arquivo_postagem{
 		width: 100%;
+	}
+
+	.painel form h1{
+		font-size: 35px !important;
+	}
+	.painel .add_imagem{
+		top: 42px;
+	
+		z-index: 2;
+	}
+	.painel .add_imagem .box_imagem{
+		width: 40%;
+	}
+	.painel .add_imagem .label_foto{
+		width: 80px;
+		height: 80px;
+	
+		padding: 5px;
+	}
+	.painel .add_imagem .icone_foto{
+		font-size: 67px;
+	}
+	.painel .add_imagem .btn{
+		height: 50px;
 	}
 }
 /* ######## painel ######## */
