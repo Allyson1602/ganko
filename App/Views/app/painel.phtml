@@ -68,14 +68,14 @@
 
 
                 <?php
-                    if(isset($this->view->criarKinesis)){
-                        if($this->view->criarKinesis){ 
+                    // if(isset($this->view->criarKinesis)){
+                    //     if($this->view->criarKinesis){ 
                 ?>
                     
-                        <form method="POST" action="/addKinesis">
-                            <div class="box_primaria">
-                                <label>Primária:</label>
-                                <select name="primaria">
+                        <form method="POST" action="/addKinesis" class="form-group add_kinesis">
+                            <div class="form-group box_primaria">
+                                <label class="titulo_kinesis">Primária:</label>
+                                <select name="primaria" class="form-control op_pri">
                                     <option value="nenhum">nenhum</option>
                                     <option value="Aerokinesis">Aerokinesis</option>
                                     <option value="Biokinesis">Biokinesis</option>
@@ -92,56 +92,88 @@
                                     <option value="Telecinese">Telecinese</option>
                                 </select>
                             </div>
-                            <div class="box_secundaria">
-                                <label for="nenhum">Nenhum</label>
-                                <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum">
-                    
-                                <label for="Aerokinesis">Aerokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis">
-                    
-                                <label for="Biokinesis">Biokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis">
-                    
-                                <label for="Criokinesis">Criokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis">
-                    
-                                <label for="Chronokinesis">Chronokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis">
-                    
-                                <label for="Electrokinesis">Electrokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis">
-                    
-                                <label for="Geokinesis">Geokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis">
-                    
-                                <label for="Hidrokinesis">Hidrokinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis">
-                    
-                                <label for="Luminokinese">Luminokinese</label>
-                                <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese">
-                    
-                                <label for="Pyrokinese">Pyrokinese</label>
-                                <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese">
-                    
-                                <label for="Psicokinese">Psicokinese</label>
-                                <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese">
-                    
-                                <label for="Umbrakinesis">Umbrakinesis</label>
-                                <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis">
-                    
-                                <label for="Atmokinese">Atmokinese</label>
-                                <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese">
-                    
-                                <label for="Telecinese">Telecinese</label>
-                                <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese">
+                            <div class="form-group box_secundaria">
+                                <label class="titulo_kinesis">Secundária:</label>
+
+                                <div class="op_sec">
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Nenhum" id="nenhum" class="form-check-input">
+                                        <label for="nenhum" class="form-check-label">Nenhum</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Aerokinesis" id="Aerokinesis" class="form-check-input">
+                                        <label for="Aerokinesis" class="form-check-label">Aerokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Biokinesis" id="Biokinesis" class="form-check-input">
+                                        <label for="Biokinesis" class="form-check-label">Biokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Criokinesis" id="Criokinesis" class="form-check-input">
+                                        <label for="Criokinesis" class="form-check-label">Criokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Chronokinesis" id="Chronokinesis" class="form-check-input">
+                                        <label for="Chronokinesis" class="form-check-label">Chronokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Electrokinesis" id="Electrokinesis" class="form-check-input">
+                                        <label for="Electrokinesis" class="form-check-label">Electrokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Geokinesis" id="Geokinesis" class="form-check-input">
+                                        <label for="Geokinesis" class="form-check-label">Geokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Hidrokinesis" id="Hidrokinesis" class="form-check-input">
+                                        <label for="Hidrokinesis" class="form-check-label">Hidrokinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Luminokinese" id="Luminokinese" class="form-check-input">
+                                        <label for="Luminokinese" class="form-check-label">Luminokinese</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Pyrokinese" id="Pyrokinese" class="form-check-input">
+                                        <label for="Pyrokinese" class="form-check-label">Pyrokinese</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Psicokinese" id="Psicokinese" class="form-check-input">
+                                        <label for="Psicokinese" class="form-check-label">Psicokinese</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Umbrakinesis" id="Umbrakinesis" class="form-check-input">
+                                        <label for="Umbrakinesis" class="form-check-label">Umbrakinesis</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Atmokinese" id="Atmokinese" class="form-check-input">
+                                        <label for="Atmokinese" class="form-check-label">Atmokinese</label>
+                                    </div>
+                            
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" name="secundaria[]" value="Telecinese" id="Telecinese" class="form-check-input">
+                                        <label for="Telecinese" class="form-check-label">Telecinese</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="box_submit">
-                                <button type="submit">enviar</button>
+                                <button type="submit" class="btn btn-outline-light">enviar</button>
                             </div>
                         </form>
                 <?php 
-                        }
-                    } 
+                    //     }
+                    // } 
                 ?>
             </div>
 

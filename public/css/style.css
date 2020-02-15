@@ -400,6 +400,36 @@ span{
   text-decoration: none;
   cursor: pointer;
 }
+/*  */
+.painel .add_kinesis{
+	width: 100%;
+	
+	padding: 15px;
+
+	position: fixed;
+		top: 10%;
+
+	z-index: 2;
+	background-color: #9400D3;
+	color: #FFF;
+}
+.painel .add_kinesis .titulo_kinesis{
+	font-size: 25px;
+}
+.painel .add_kinesis .op_sec{
+	width: 60%;
+}
+.painel .add_kinesis select{
+	width: 200px;
+}
+.painel .add_kinesis .form-check{
+	width: 130px;
+
+	font-size: 16px;
+}
+.painel .add_kinesis button:hover{
+	color: #9400D3 !important;
+}
 
 @media (min-width: 768px){
 	.painel header{
@@ -444,8 +474,6 @@ span{
 		font-size: 35px !important;
 	}
 	.painel .add_imagem{
-		/* height: 200px; */
-		
 		top: 82px;
 	
 		z-index: 2;
@@ -469,13 +497,13 @@ span{
 }
 @media (max-width: 768px){
 	.painel header{
-		height: 42px;
+		height: 47px;
 	}	
 	.painel span{
 		width: 75%;
 	}
 	.painel nav a{
-		font-size: 20px;
+		font-size: 25px;
 	}
 	.painel nav .logo{
 		width: 100px;
