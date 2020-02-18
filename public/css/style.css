@@ -89,6 +89,9 @@ span{
 	}
 }
 @media (max-width: 768px){
+	.index{
+		height: 500px !important;
+	}
 	.index .banner{
 		width: 100%;
 		height: 25%;
@@ -558,12 +561,91 @@ span{
 
 /* ######## perfil ######## */
 
+.perfil .conteudo{
+	margin-top: 82px;
+}
+.perfil .col{
+	padding: 0;
+}
+.perfil header{
+	width: 100%;
+
+	position: fixed;
+	top: 0;
+
+	z-index: 1;
+	overflow: hidden;
+	text-align: center;
+}
+.perfil nav{
+	display: flex;
+		align-items: center;
+}
+.perfil .bfoto_perfil{
+	width: 100%;
+	height: 320px;
+
+	padding: 0;
+
+	display: flex;
+		justify-content: center;
+		align-items: center;
+
+	margin: 0 auto;
+}
+.perfil .bfoto_perfil img{
+	width: 300px;
+
+	max-width: 300px;
+	max-height: 300px;
+
+	border-radius: 150px;
+	border: 2px solid green;
+}
+.perfil .dados{
+	width: 100%;
+	height: auto;
+
+	margin-left: 1px;
+
+	background-color: white;
+	text-align: center;
+	border-top: 2px solid green;
+}
+.perfil .dados .col-6{
+	padding: 0;
+
+	/* border: 1px solid red; */
+}
+
 
 @media (min-width: 768px){
-
+	.perfil header{
+		height: 82px;
+	}	
+	.perfil span{
+		width: 80%;
+	}
+	.perfil nav a{
+		font-size: 28px;
+	}
+	.perfil nav .logo{
+		width: 200px;
+	}
 }
 
 @media (max-width: 768px){
-
+	.perfil header{
+		height: 47px;
+	}	
+	.perfil span{
+		width: 75%;
+	}
+	.perfil nav a{
+		font-size: 25px;
+	}
+	.perfil nav .logo{
+		width: 100px;
+	}
 }
 /* ######## perfil ######## */
