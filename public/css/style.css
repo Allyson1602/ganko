@@ -435,6 +435,9 @@ span{
 }
 
 @media (min-width: 768px){
+	.painel .open_resp, .painel #mySidenav{
+		display: none;
+	}
 	.painel header{
 		height: 82px;
 	}	
@@ -499,8 +502,63 @@ span{
 	}
 }
 @media (max-width: 768px){
+	.painel .open_resp{
+		width: 100%;
+
+		color: white;
+	}
+	.painel .open_resp img{
+		width: 200px;
+	}
+	.painel .open_resp p{
+		margin-right: 15px;
+		margin-top: 5px;
+
+		font-size: 40px;
+		float: right;
+	}
+	.painel #mySidenav{
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+
+		z-index: 2;
+	}
+	.painel #mySidenav .closebtn{
+		height: 40px;
+
+		margin: 20px;
+
+		float: right;
+
+		line-height: 30px;
+		font-size: 50px;
+		color: white;
+	}
+	.painel #mySidenav span{
+		margin: 0 auto;
+	}
+	.painel #mySidenav span img{
+		width: 200px;
+	}
+	.painel #mySidenav .link_a{
+		margin-top: 40px;
+	}
+	.painel #mySidenav a{
+		margin-left: 10%;
+		margin: 0 30px;
+
+		font-size: 40px;
+	}
+	.painel .closebtn:hover{
+		text-shadow: 0px 0px 10px black;
+		text-decoration: none;
+	}
 	.painel header{
 		height: 47px;
+
+		display: none;
 	}	
 	.painel span{
 		width: 75%;

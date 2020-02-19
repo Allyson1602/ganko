@@ -9,6 +9,41 @@
                     <a href="/adicionar_amigos" class="text-light ml-3" style="width:5%" title="amigos"><i class="fas fa-user-friends"></i></a>
                 </nav>
             </header>
+            <div id="mySidenav" class="sidenav bg-success">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                
+                <span><img src="img/sistema/logo_ganko.png" alt="logo ganko" class="img-fluid logo" /></span>
+                <div class="link_a">
+                    <a href="/sair" class="text-light nav_a" title="sair"><i class="fas fa-power-off"></i> encerrar sessão</a><br/>
+                    <a href="/perfil" class="text-light nav_a" title="perfil"><i class="fas fa-user-circle"></i> perfil</a><br/>
+                    <a href="/adicionar_amigos" class="text-light nav_a" title="amigos"><i class="fas fa-user-friends"></i> adicionar amigos</a>
+                </div>
+            </div>
+            <span class="bg-success open_resp" style="font-size:30px;cursor:pointer" onclick="openNav()">
+                <img src="img/sistema/logo_ganko.png" alt="logo ganko" class="img-fluid logo" />
+                <p>&#9776;</p>
+            </span>
+
+            <script>
+                var x, i;
+
+                function openNav(){
+                    document.getElementById("mySidenav").style.width = "100%";
+
+                    x = document.querySelectorAll(".nav_a")
+                    for(i=0; i<x.length; i++){
+                        x[i].style.display = "block";
+                    }
+                }
+                function closeNav(){
+                    document.getElementById("mySidenav").style.width = "0%";
+
+                    x = document.querySelectorAll(".nav_a")
+                    for(i=0; i<x.length; i++){
+                        x[i].style.display = "none";
+                    }
+                }
+            </script>
 
             <?php
                 if(isset($_GET['msg'])){
