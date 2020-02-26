@@ -1,53 +1,58 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form method="POST" action="/editar_dados" enctype="multipart/form-data">
-                <div class="box_imagem">
-                    <label>foto de perfil:</label>
-                    <input type="file" name="foto" />
+            <form method="POST" action="/editar_dados" enctype="multipart/form-data" class="form-group">
+                <div class="box_imagem form-group">
+                    <label>Imagem de perfil:</label>
+                    
+                    <label class="label_foto"  for="foto"><i class="fas fa-street-view icone_foto"></i></label>
+                    <input type="file" id="foto" name="foto" />
+
                 </div>
-                <div class="box_nascimento">
+                <div class="box_nascimento form-group">
                     <?php
                         $partes_data = explode('/', $this->view->usuario['nascimento']);
 
                         $americano_data = new DateTime();
                         $americano_data->setDate($partes_data[2], $partes_data[1], $partes_data[0])
                     ?>
-					<label>data de nascimento:</label>
-					<input type="date" name="nascimento" value="<?= $americano_data->format('Y-m-d'); ?>" />
+					<label>Data de nascimento:</label>
+					<input type="date" name="nascimento" value="<?= $americano_data->format('Y-m-d'); ?>" class="form-control" />
 				</div>
-                <?php print($partes_data[2].'/'.$partes_data[1].'/'.$partes_data[0]); ?>
-				<div class="box_genero">
-					<fieldset><label>gênero:</label>
-						<label for="masculino">masculino</label>
-						<input type="radio" name="genero" value="masculino" id="masculino" <?php $this->view->usuario['genero']=='masculino'? print('checked'):''; ?> />
-
-						<label for="feminino">feminino</label>
-						<input type="radio" name="genero" value="feminino" id="feminino" <?php $this->view->usuario['genero']=='feminino'? print('checked'):''; ?> />
-
-						<label for="outro">outro</label>
-						<input type="radio" name="genero" value="outro" id="outro" <?php $this->view->usuario['genero']=='outro'? print('checked'):''; ?>/>
-					</fieldset>
+				<div class="box_genero form-group">
+					<label>Gênero:</label>
+                    <div class="form-check">
+                        <input type="radio" name="genero" value="masculino" id="masculino" class="form-check-input" <?php $this->view->usuario['genero']=='masculino'? print('checked'):''; ?> />
+                        <label for="masculino" class="form-check-label">masculino</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="genero" value="feminino" id="feminino" class="form-check-input" <?php $this->view->usuario['genero']=='feminino'? print('checked'):''; ?> />
+                        <label for="feminino" class="form-check-label">feminino</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="genero" value="outro" id="outro" class="form-check-input" <?php $this->view->usuario['genero']=='outro'? print('checked'):''; ?>/>
+                        <label for="outro" class="form-check-label">outro</label>
+                    </div>
 				</div>
-				<div class="box_tempo">
+				<div class="box_tempo form-group">
                     <?php
                         $partes_data = explode('/', $this->view->usuario['comeco']);
                         
                         $americano_data->setDate($partes_data[2], $partes_data[1], $partes_data[0])
                     ?>
-					<label>tempo de prática em kinesis:</label>
-					<input type="date" name="comeco" value="<?= $americano_data->format('Y-m-d'); ?>" />
+					<label>Tempo de prática em kinesis:</label>
+					<input type="date" name="comeco" class="form-control" value="<?= $americano_data->format('Y-m-d'); ?>" />
 				</div>
-				<div class="box_login">
-					<label>login:</label>
-					<input type="text" name="login" value="<?= $this->view->usuario['nick']; ?>" maxlength="10" />
+				<div class="box_login form-group">
+					<label>Login:</label>
+					<input type="text" name="login" class="form-control" value="<?= $this->view->usuario['nick']; ?>" maxlength="10" />
 				</div>
-				<div class="box_email">
-					<label>email:</label>
-					<input type="text" name="email" value="<?= $this->view->usuario['email']; ?>" maxlength="40" />
-				</div><div class="box_primaria">
+				<div class="box_email form-group">
+					<label>Email:</label>
+					<input type="text" name="email" class="form-control" value="<?= $this->view->usuario['email']; ?>" maxlength="40" />
+				</div><div class="box_primaria form-group">
                 <label>Primária:</label>
-                <select name="primaria">
+                <select name="primaria" class="form-control">
                     <option value="Aerokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='AeroKinesis'?'selected':''; ?> >Aerokinesis</option>
                     <option value="Biokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Biokinesis'?'selected':''; ?> >Biokinesis</option>
                     <option value="Criokinesis" <?= $this->view->kinesis_alt[0]['primaria']=='Criokinesis'?'selected':''; ?> >Criokinesis</option>
@@ -63,7 +68,8 @@
                     <option value="Telecinese" <?= $this->view->kinesis_alt[0]['primaria']=='Telecinese'?'selected':''; ?> >Telecinese</option>
                 </select>
             </div>
-            <div class="box_secundaria">
+            <div class="box_secundaria form-group">
+                <label>Secundária:</label>
             <?php
             // verificar se kinesis é primária com js(já verificado com php)!!
 
@@ -74,12 +80,15 @@
 
                 foreach($kinesis as $kinese){
                     ?>
-                        <label for='<?= $kinese; ?>'><?= $kinese; ?></label>
-                        <input type='checkbox' name='secundaria[]' value='<?= $kinese; ?>' id='<?= $kinese; ?>' 
-                        <?php foreach($this->view->kinesis_alt as $dados_kinesis){ if($dados_kinesis['secundaria'] == $kinese){ echo "checked"; } }?> /> <?php } ?>
+                    <div class='form-check'>
+                        <input type='checkbox' name='secundaria[]' class='form-control-input' value='<?= $kinese; ?>' id='<?= $kinese; ?>' 
+                        <?php foreach($this->view->kinesis_alt as $dados_kinesis){ if($dados_kinesis['secundaria'] == $kinese){ echo "checked"; } }?> />
+                        <label for='<?= $kinese; ?>' class='form-control-label'><?= $kinese; ?></label>
+                    </div> 
+                <?php } ?>
             </div>
                 <div class="box_submit">
-                    <button type="submit">alterar</button>
+                    <button type="submit" class="btn btn-success">alterar</button>
                 </div>
 				<?php
 					if(isset($_GET['msg'])){
@@ -103,7 +112,7 @@
 					}
 				?>
             </form>
-			<a href="/painel">voltar</a>
+			<a href="/painel" class="btn btn-info">voltar</a>
         </div>
     </div>
 </div>

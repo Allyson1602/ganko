@@ -91,9 +91,10 @@
 			return $this;
 		}
         public function getAll(){
-            $query = "SELECT id, nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, DATE_FORMAT(comeco, '%d/%m/%Y') AS comeco, nick, email, foto FROM usuarios WHERE nick=:nick";
+            $query = "SELECT id, nome, sobrenome, DATE_FORMAT(nascimento, '%d/%m/%Y') AS nascimento, genero, DATE_FORMAT(comeco, '%d/%m/%Y') AS comeco, nick, email, foto FROM usuarios WHERE (nick=:nick OR id=:id)";
             $stmt = $this->db->prepare($query);
 			$stmt->bindValue(':nick', $this->__get('nick'));
+			$stmt->bindValue(':id', $this->__get('id'));
 			$stmt->execute();
 
 			return $stmt->fetch(\PDO::FETCH_ASSOC);
