@@ -55,8 +55,18 @@
             $usuario = Container::getModel('Usuario');
             $kinesis = Container::getModel('Kinesis');
 
-            $usuario->__set('id', $_SESSION['id']);
-            $kinesis->__set('id_usuario', $_SESSION['id']);
+            if(isset($_GET['who'])){
+                $usuario->__set('nick', $_GET['who']);
+                $this->view->dados_usuario = $usuario->getAll();
+
+                $kinesis->__set('id_usuario', $usuario->getAll()['id']);
+            }else{
+                $usuario->__set('nick', $_SESSION['nick']);
+                $this->view->dados_usuario = $usuario->getAll();
+
+                $kinesis->__set('id_usuario', $_SESSION['id']);
+            }
+
 
             $this->view->kinesis_existem = False;
             if(count($kinesis->getAll()) != 0){
@@ -69,8 +79,6 @@
                 $this->view->kinesis_existem = True;
             }
 
-            $this->view->dados_usuario = $usuario->getAll();
-            
             $this->render('perfil');
         }
         public function alterarDados(){

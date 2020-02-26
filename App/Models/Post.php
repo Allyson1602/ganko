@@ -46,7 +46,12 @@
                     SELECT foto
                     FROM usuarios
                     WHERE id=p.id_usuario
-                ) AS foto_usuario
+                ) AS foto_usuario,
+                (
+                    SELECT nick
+                    FROM usuarios
+                    WHERE id=p.id_usuario
+                ) AS nick_usuario
             FROM 
                 post AS p
             ORDER BY 
