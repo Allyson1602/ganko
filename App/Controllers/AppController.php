@@ -272,17 +272,15 @@
             $this->validar();
 
             $usuario = Container::getModel('Usuario');
-
-            $this->procurarAmigo();
+            
+            if(isset($_POST['amigo'])){
+                $usuario->__set('nick', $_POST['amigo']);
+                $this->view->retorno_procuraramigo = $usuario->procurarAmigo();
+            }
 
             $this->view->usuario_add = $usuario->getUsuario();
 
             $this->render('adicionar_amigos');
-        }
-        public function procurarAmigo(){
-            $usuario = Container::getModel('Usuario');
-            $usuario->__set('nick', $_POST['amigo']);
-            print_r($usuario->procurarAmigo());
         }
         
         

@@ -163,17 +163,16 @@
 			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		}
 		public function procurarAmigo(){
-			$query = "SELECT nick, foto FROM usuarios WHERE nick=:nick";
+			$query = "SELECT nick, foto FROM usuarios WHERE nick LIKE :nick LIMIT 40";
 			$stmt = $this->db->prepare($query);
-			$stmt->bindValue(':nick', $this->__get('nick'));
+			$stmt->bindValue(':nick', '%'.$this->__get('nick').'%');
 			$stmt->execute();
 
 			return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 		}
 
-
 		public function autenticar(){
-			$query = "SELECT id, nick, email FROM usuarios WHERE (nick = :nick OR email = :nick) AND senha = :senha";
+			$query = "SELECT id, nick, email FROM usuarios WHERE (nick = :nick OR email = :nick) AND senha = :senha LIMIT 40";
 			$stmt = $this->db->prepare($query);
 			$stmt->bindValue(':nick', $this->__get('nick'));
 			$stmt->bindValue(':senha', md5($this->__get('senha')));

@@ -5,7 +5,7 @@
         </div>
         <div class="col-6">
             <h5 class="bg-info text-center">procurar: </h5>
-            <form method="POST" action="procurar_amigo">
+            <form method="POST" action="">
                 <div class="box_nome">
                     <input type="text" name="amigo" placeholder="nick" />
                 </div>
@@ -13,12 +13,25 @@
                     <button type="submit">procurar</button>
                 </div>
             </form>
+            <?php
+                if(count($this->view->retorno_procuraramigo) != 0){
+                    print('<div class="resultado_busca">');
+
+                    foreach($this->view->retorno_procuraramigo AS $procuraramigo){
+                        print("<p class='text-center'><a href='/perfil?who=".$procuraramigo['nick']."'>
+                            ".$procuraramigo['nick']."<img src='img/perfil/".$procuraramigo['foto']."' width='100' height='100' />
+                        </a></p>");
+                    }
+    
+                    print('</div>');
+                }
+            ?>
         </div>
         <div class="col">
             <h5 class="bg-danger">possíveis amigos: </h5>
             <?php 
                 foreach($this->view->usuario_add AS $usuario){
-                    print("<p class='text-right'><a href='#'>
+                    print("<p class='text-right'><a href='/perfil?who=".$usuario['nick']."'>
                         ".$usuario['nick']."<img src='img/perfil/".$usuario['foto']."' width='100' height='100' />
                     </a></p>");
                 }
