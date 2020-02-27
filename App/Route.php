@@ -128,6 +128,11 @@ class Route extends Bootstrap {
 			'controller' => 'AppController',
 			'action' => 'procurarAmigo'
 		);
+		$routes['addAmigo'] = array(
+			'route' => '/add_amigo',
+			'controller' => 'AppController',
+			'action' => 'addAmigo'
+		);
 		
 		$this->setRoutes($routes);
 	}

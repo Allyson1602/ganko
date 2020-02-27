@@ -2,6 +2,15 @@
     <div class="row">
         <div class="col">
             <h5 class="bg-success">meus amigos: </h5>
+            <div class="retorno_meusamigos">
+                <?php
+                    // if(isset($this->view->retorno_meusamigos)){
+
+                    // }else{
+                    //     print("<p>Nenhum amigo encontrado.</p>");
+                    // }
+                ?>
+            </div>
         </div>
         <div class="col-6">
             <h5 class="bg-info text-center">procurar: </h5>
@@ -14,13 +23,16 @@
                 </div>
             </form>
             <?php
-                if(count($this->view->retorno_procuraramigo) != 0){
+                if(isset($this->view->retorno_procuraramigo)){
                     print('<div class="resultado_busca">');
 
                     foreach($this->view->retorno_procuraramigo AS $procuraramigo){
-                        print("<p class='text-center'><a href='/perfil?who=".$procuraramigo['nick']."'>
-                            ".$procuraramigo['nick']."<img src='img/perfil/".$procuraramigo['foto']."' width='100' height='100' />
-                        </a></p>");
+                        print("<p class='text-center'>
+                            <a href='/perfil?who=".$procuraramigo['nick']."'>
+                                ".$procuraramigo['nick']."<img src='img/perfil/".$procuraramigo['foto']."' width='100' height='100' /></a>
+                            <a href='/add_amigo?acao=adicionar&id=".$procuraramigo['id']."' class='btn btn-info'>adicionar</a>
+                            <a href='/add_amigo?acao=remover&id=".$procuraramigo['id']."' class='btn btn-danger'>remover</a>
+                        </p>");
                     }
     
                     print('</div>');
@@ -31,9 +43,12 @@
             <h5 class="bg-danger">possíveis amigos: </h5>
             <?php 
                 foreach($this->view->usuario_add AS $usuario){
-                    print("<p class='text-right'><a href='/perfil?who=".$usuario['nick']."'>
-                        ".$usuario['nick']."<img src='img/perfil/".$usuario['foto']."' width='100' height='100' />
-                    </a></p>");
+                    print("<p class='text-right'>
+                        <a href='/perfil?who=".$usuario['nick']."'>
+                        ".$usuario['nick']."<img src='img/perfil/".$usuario['foto']."' width='100' height='100' /></a>
+                        <a href='/add_amigo?acao=adicionar&id=".$usuario['id']."' class='btn btn-info'>adicionar</a>
+                        <a href='/add_amigo?acao=remover&id=".$usuario['id']."' class='btn btn-danger'>remover</a>
+                    </p>");
                 }
             ?>
         </div>

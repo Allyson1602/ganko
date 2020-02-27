@@ -272,6 +272,7 @@
             $this->validar();
 
             $usuario = Container::getModel('Usuario');
+            $amigos = Container::getModel('Amigos');
             
             if(isset($_POST['amigo'])){
                 $usuario->__set('nick', $_POST['amigo']);
@@ -281,6 +282,25 @@
             $this->view->usuario_add = $usuario->getUsuario();
 
             $this->render('adicionar_amigos');
+        }
+        public function addAmigo(){
+            $this->validar();
+
+            $amigos = Container::getModel('Amigos');
+
+            if(isset($_GET['acao'])){
+                $amigos->__set('id_usuario', $_SESSION['id']);
+                $amigos->__set('id_amigo', $_GET['id']);
+                
+                if($_GET['acao'] == 'adicionar'){
+                    $amigos->adicionar();
+                }
+                if($_GET['acao'] == 'remover'){
+                    $amigos->remover();
+                }
+            }
+
+            return header('location: /adicionar_amigos');
         }
         
         
