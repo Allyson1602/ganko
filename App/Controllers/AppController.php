@@ -283,7 +283,7 @@
 
             $this->view->usuario_add = $usuario->getUsuario();
             
-            $this->view->naoAmigo = $amigos->getAll();
+            $this->view->amigos = $amigos->getAll();
 
             $this->render('adicionar_amigos');
         }

@@ -4,11 +4,19 @@
             <h5 class="bg-success">meus amigos: </h5>
             <div class="retorno_meusamigos">
                 <?php
-                    // if(isset($this->view->retorno_meusamigos)){
+                    $qtd_amigos = count($this->view->amigos);
 
-                    // }else{
-                    //     print("<p>Nenhum amigo encontrado.</p>");
-                    // }
+                    // LIMITAR RETORNO DE AMIGOS
+                    foreach($this->view->usuario_add AS $usuario){
+                        for($i=0;$i<$qtd_amigos;$i++){
+                            if($this->view->amigos[$i]['id_amigo'] != $usuario['id']){
+                                print("<p class='text-right'>
+                                    <a href='/perfil?who=".$usuario['nick']."'>".$usuario['nick']."<img src='img/perfil/".$usuario['foto']."' width='100' height='100' /></a>
+                                    <a href='/alt_amigo?acao=remover&id=".$usuario['id']."' class='btn btn-danger'>remover</a>");
+                                print("</p>");
+                            }
+                        }                   
+                    }
                 ?>
             </div>
         </div>
@@ -23,15 +31,13 @@
                 </div>
             </form>
             <?php
-                $qtd_amigos = count($this->view->naoAmigo);
-
                 if(isset($this->view->retorno_procuraramigo)){
                     print('<div class="resultado_busca">');
 
                     foreach($this->view->retorno_procuraramigo AS $procuraramigo){
                         $val = true;
                         for($i=0;$i<$qtd_amigos;$i++){
-                            if($this->view->naoAmigo[$i]['id_amigo'] == $procuraramigo['id']){
+                            if($this->view->amigos[$i]['id_amigo'] == $procuraramigo['id']){
                                 $val = false;
                             }
                         }
@@ -54,7 +60,7 @@
                 foreach($this->view->usuario_add AS $usuario){
                     $val = true;
                     for($i=0;$i<$qtd_amigos;$i++){
-                        if($this->view->naoAmigo[$i]['id_amigo'] == $usuario['id']){
+                        if($this->view->amigos[$i]['id_amigo'] == $usuario['id']){
                             $val = false;
                         }
                     }                            
