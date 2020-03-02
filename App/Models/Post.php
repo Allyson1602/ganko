@@ -55,7 +55,8 @@
             FROM 
                 post AS p
             ORDER BY 
-                p.data DESC";
+                p.data DESC
+            LIMIT 30";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
 

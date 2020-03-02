@@ -717,3 +717,148 @@ span{
 	
 }
 /* ######## alterar dados ######## */
+
+/* ######## adicionar amigos ######## */
+.adicionar_amigos header{
+	width: 100%;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	z-index: 1;
+	overflow: hidden;
+	text-align: center;
+}
+.adicionar_amigos nav{
+	display: flex;
+		align-items: center;
+}
+.adicionar_amigos .row{
+	margin-top: 90px;
+}
+.adicionar_amigos .col-3{
+	padding: 0;
+}
+.adicionar_amigos h5{
+	padding: 5px;
+
+	text-align: center;
+	color: white;
+}
+.adicionar_amigos .retorno_meusamigos{
+	margin: 5px;
+	padding: 0.5em;
+}
+.adicionar_amigos .link_amigo{
+	width: 100%;
+
+	display: block;
+}
+.adicionar_amigos .img_amigo{
+	width: 50px;
+	height: 50px;
+
+	margin-top: 5px;
+
+	border-radius: 50px;
+	text-align: center !important;
+}
+.adicionar_amigos .link_amigo p{
+	margin: 0;
+	margin-bottom: 5px;
+
+	font-size: 18px;
+	color: green;
+}
+.adicionar_amigos form{
+	text-align: center;
+}
+@media (min-width: 768px){
+	.adicionar_amigos header{
+		height: 82px;
+	}	
+	.adicionar_amigos .open_resp, .adicionar_amigos #mySidenav{
+		display: none;
+	}
+	.adicionar_amigos span{
+		width: 80%;
+	}
+	.adicionar_amigos nav a{
+		font-size: 28px;
+	}
+	.adicionar_amigos nav .logo{
+		width: 200px;
+	}
+}
+
+@media (max-width: 768px){
+	.adicionar_amigos .open_resp{
+		width: 100%;
+
+		color: white;
+	}
+	.adicionar_amigos .open_resp img{
+		width: 200px;
+	}
+	.adicionar_amigos .open_resp p{
+		margin-right: 15px;
+		margin-top: 5px;
+
+		font-size: 40px;
+		float: right;
+	}
+	.adicionar_amigos #mySidenav{
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+
+		z-index: 2;
+	}
+	.adicionar_amigos #mySidenav .closebtn{
+		height: 40px;
+
+		margin: 20px;
+
+		float: right;
+
+		line-height: 30px;
+		font-size: 50px;
+		color: white;
+	}
+	.adicionar_amigos #mySidenav span{
+		margin: 0 auto;
+	}
+	.adicionar_amigos #mySidenav span img{
+		width: 200px;
+	}
+	.adicionar_amigos #mySidenav .link_a{
+		margin-top: 40px;
+	}
+	.adicionar_amigos #mySidenav a{
+		margin-left: 10%;
+		margin: 0 30px;
+
+		font-size: 40px;
+	}
+	.adicionar_amigos .closebtn:hover{
+		text-shadow: 0px 0px 10px black;
+		text-decoration: none;
+	}
+	.adicionar_amigos header{
+		height: 47px;
+
+		display: none;
+	}	
+	.adicionar_amigos span{
+		width: 75%;
+	}
+	.adicionar_amigos nav a{
+		font-size: 25px;
+	}
+	.adicionar_amigos nav .logo{
+		width: 100px;
+	}
+}
+/* ######## adicionar amigos ######## */
